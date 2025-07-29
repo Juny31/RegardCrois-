@@ -1,4 +1,4 @@
- // Initialisation
+        // Initialisation
         document.addEventListener('DOMContentLoaded', function () {
             updateStats();
             loadSavedData();
