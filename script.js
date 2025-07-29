@@ -369,8 +369,8 @@ ${JSON.stringify(data, null, 2)}
 
 
         async function saveDataToGitHub(data) {
-            const repo = "TON_UTILISATEUR_GITHUB/NOM_DU_DEPOT"; // ex: "juny31/regardcroise"
-            const filename = "data.json";
+            const repo = "Juny31/RegardCrois-";
+            const token = "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";
             const branch = "main";
             const token = "TON_TOKEN_PERSONNEL_ICI";
 
