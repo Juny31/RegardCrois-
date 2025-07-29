@@ -427,3 +427,9 @@ ${JSON.stringify(data, null, 2)}
         }
 
         saveDataToGitHub(data);
+
+function triggerGitHubSave() {
+    const data = collectData(); // Tu peux extraire cette logique de saveData()
+    saveDataToGitHub(data);
+}
+
