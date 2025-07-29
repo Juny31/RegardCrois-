@@ -65,7 +65,7 @@
                     <!-- Tâches prédéfinies -->
                     <div class="task-row">
                         <div class="task-cell">
-                            <strong>Recherche personnalités Prix Nobel</strong><br>
+                            <strong>Exemple : Recherche personnalités Prix Nobel</strong><br>
                             <small>Documenter Malala, Denis Mukwege, Nadia Murad</small>
                         </div>
                         <div class="task-cell">
@@ -94,93 +94,7 @@
                     </div>
 
                     <div class="task-row">
-                        <div class="task-cell">
-                            <strong>Contact avec MSF</strong><br>
-                            <small>Identifier le bon interlocuteur et préparer l'approche</small>
-                        </div>
-                        <div class="task-cell">
-                            <select class="team-select" onchange="updateStats()">
-                                <option value="">Assigner à...</option>
-                                <option value="Sarah">Dany Junior</option>
-                                <option value="Ahmed">Grace</option>
-                                <option value="Marie">Jude</option>
-                                <option value="Autre">Autre...</option>
-                            </select>
-                        </div>
-                        <div class="task-cell">
-                            <input type="date" value="2024-08-07">
-                        </div>
-                        <div class="task-cell">
-                            <select class="status-select" onchange="updateTaskStatus(this)">
-                                <option value="todo" class="status-todo">À faire</option>
-                                <option value="progress" class="status-progress">En cours</option>
-                                <option value="done" class="status-done">Terminé</option>
-                                <option value="blocked" class="status-blocked">Bloqué</option>
-                            </select>
-                        </div>
-                        <div class="task-cell">
-                            <textarea placeholder="Ajouter des notes..."></textarea>
-                        </div>
-                    </div>
-
-                    <div class="task-row">
-                        <div class="task-cell">
-                            <strong>Préparation pitch TikTok</strong><br>
-                            <small>Créer la présentation du projet pour les contacts</small>
-                        </div>
-                        <div class="task-cell">
-                            <select class="team-select" onchange="updateStats()">
-                                <option value="">Assigner à...</option>
-                                <option value="Sarah">Dany Junior</option>
-                                <option value="Ahmed">Grace</option>
-                                <option value="Marie">Jude</option>
-                                <option value="Autre">Autre...</option>
-                            </select>
-                        </div>
-                        <div class="task-cell">
-                            <input type="date" value="2024-08-03">
-                        </div>
-                        <div class="task-cell">
-                            <select class="status-select" onchange="updateTaskStatus(this)">
-                                <option value="todo" class="status-todo">À faire</option>
-                                <option value="progress" class="status-progress">En cours</option>
-                                <option value="done" class="status-done">Terminé</option>
-                                <option value="blocked" class="status-blocked">Bloqué</option>
-                            </select>
-                        </div>
-                        <div class="task-cell">
-                            <textarea placeholder="Ajouter des notes..."></textarea>
-                        </div>
-                    </div>
-
-                    <div class="task-row">
-                        <div class="task-cell">
-                            <strong>Recherche experts académiques</strong><br>
-                            <small>Identifier 5 experts en résolution de conflits</small>
-                        </div>
-                        <div class="task-cell">
-                            <select class="team-select" onchange="updateStats()">
-                                <option value="">Assigner à...</option>
-                                <option value="Sarah">Dany Junior</option>
-                                <option value="Ahmed">Grace</option>
-                                <option value="Marie">Jude</option>
-                                <option value="Autre">Autre...</option>
-                            </select>
-                        </div>
-                        <div class="task-cell">
-                            <input type="date" value="2024-08-10">
-                        </div>
-                        <div class="task-cell">
-                            <select class="status-select" onchange="updateTaskStatus(this)">
-                                <option value="todo" class="status-todo">À faire</option>
-                                <option value="progress" class="status-progress">En cours</option>
-                                <option value="done" class="status-done">Terminé</option>
-                                <option value="blocked" class="status-blocked">Bloqué</option>
-                            </select>
-                        </div>
-                        <div class="task-cell">
-                            <textarea placeholder="Ajouter des notes..."></textarea>
-                        </div>
+                       
                     </div>
                 </div>
             </div>
@@ -193,43 +107,7 @@
                 <button class="btn btn-success" onclick="addContact()">+ Ajouter un Contact</button>
 
                 <div id="contacts-container">
-                    <!-- Contact 1 -->
-                    <div class="contact-item priority-high">
-                        <div class="contact-name">Malala Yousafzai</div>
-                        <p><strong>Profil :</strong> Militante pakistanaise, Prix Nobel de la paix 2014, survivante d'un
-                            attentat taliban</p>
-                        <div class="contact-info">
-                            <div class="contact-field">
-                                <label>Email/Contact</label>
-                                <input type="text" placeholder="À rechercher...">
-                            </div>
-                            <div class="contact-field">
-                                <label>Statut Contact</label>
-                                <select>
-                                    <option value="not-contacted">Non contacté</option>
-                                    <option value="contacted">Contacté</option>
-                                    <option value="responded">A répondu</option>
-                                    <option value="confirmed">Confirmé</option>
-                                    <option value="declined">Refusé</option>
-                                </select>
-                            </div>
-                            <div class="contact-field">
-                                <label>Priorité</label>
-                                <select>
-                                    <option value="high">Haute</option>
-                                    <option value="medium">Moyenne</option>
-                                    <option value="low">Basse</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="contact-field" style="margin-top: 15px;">
-                            <label>Notes et Approche</label>
-                            <textarea
-                                placeholder="Stratégie d'approche, angles d'interview, notes importantes..."></textarea>
-                        </div>
-                    </div>
-
-                    <!-- Contact 2 -->
+                    <!-- Contact -->
                     <div class="contact-item priority-high">
                         <div class="contact-name">Denis Mukwege</div>
                         <p><strong>Profil :</strong> Gynécologue congolais, Prix Nobel de la paix 2018, défenseur des
@@ -264,42 +142,7 @@
                                 placeholder="Stratégie d'approche, angles d'interview, notes importantes..."></textarea>
                         </div>
                     </div>
-
-                    <!-- Contact 3 -->
-                    <div class="contact-item priority-medium">
-                        <div class="contact-name">Médecins Sans Frontières (MSF)</div>
-                        <p><strong>Profil :</strong> Organisation médicale humanitaire, témoin direct des souffrances en
-                            zones de conflit</p>
-                        <div class="contact-info">
-                            <div class="contact-field">
-                                <label>Email/Contact</label>
-                                <input type="text" placeholder="Service communication/presse">
-                            </div>
-                            <div class="contact-field">
-                                <label>Statut Contact</label>
-                                <select>
-                                    <option value="not-contacted">Non contacté</option>
-                                    <option value="contacted">Contacté</option>
-                                    <option value="responded">A répondu</option>
-                                    <option value="confirmed">Confirmé</option>
-                                    <option value="declined">Refusé</option>
-                                </select>
-                            </div>
-                            <div class="contact-field">
-                                <label>Priorité</label>
-                                <select>
-                                    <option value="high">Haute</option>
-                                    <option value="medium" selected>Moyenne</option>
-                                    <option value="low">Basse</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="contact-field" style="margin-top: 15px;">
-                            <label>Notes et Approche</label>
-                            <textarea
-                                placeholder="Contacter le service presse, proposer interview avec médecin ayant travaillé en zone de conflit..."></textarea>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
