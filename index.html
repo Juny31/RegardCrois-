@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document de Travail - Regard Croisé | Les conflits vus par les opprimés</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .slide {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .slide-header {
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            color: white;
+            padding: 20px 30px;
+            font-size: 1.4em;
+            font-weight: 600;
+        }
+
+        .slide-content {
+            padding: 30px;
+        }
+
+        .task-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 2fr;
+            gap: 0;
+            margin: 20px 0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .task-header {
+            background: #34495e;
+            color: white;
+            padding: 15px;
+            font-weight: 600;
+            text-align: center;
+            border-right: 1px solid #2c3e50;
+        }
+
+        .task-header:last-child {
+            border-right: none;
+        }
+
+        .task-row {
+            display: contents;
+        }
+
+        .task-cell {
+            padding: 15px;
+            border-right: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            background: white;
+            min-height: 60px;
+        }
+
+        .task-cell:last-child {
+            border-right: none;
+        }
+
+        .task-cell input, .task-cell select, .task-cell textarea {
+            width: 100%;
+            border: 1px solid #ddd;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .task-cell textarea {
+            resize: vertical;
+            min-height: 50px;
+        }
+
+        .status-select {
+            background-color: white;
+        }
+
+        .status-todo { background-color: #fff3cd !important; }
+        .status-progress { background-color: #d4edda !important; }
+        .status-done { background-color: #d1ecf1 !important; }
+        .status-blocked { background-color: #f8d7da !important; }
+
+        .contact-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .contact-item {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 6px;
+            border-left: 4px solid #3498db;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .contact-name {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .contact-field {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-field label {
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .contact-field input, .contact-field textarea {
+            border: 1px solid #ddd;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .priority-high { border-left-color: #e74c3c !important; }
+        .priority-medium { border-left-color: #f39c12 !important; }
+        .priority-low { border-left-color: #27ae60 !important; }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-top: 4px solid #3498db;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+
+        .btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-1px);
+        }
+
+        .btn-success { background: #27ae60; }
+        .btn-success:hover { background: #219a52; }
+
+        .btn-danger { background: #e74c3c; }
+        .btn-danger:hover { background: #c0392b; }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #ecf0f1;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #27ae60, #2ecc71);
+            transition: width 0.3s ease;
+        }
+
+        .team-member {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin: 2px;
+            cursor: pointer;
+        }
+
+        .notes-section {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 6px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .notes-section h4 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        .editable {
+            border: 1px dashed #ddd;
+            padding: 5px;
+            min-height: 20px;
+            cursor: text;
+        }
+
+        .editable:hover {
+            background: #f8f9fa;
+        }
+
+        @media (max-width: 768px) {
+            .task-grid {
+                display: block;
+            }
+            
+            .task-header, .task-cell {
+                display: block;
+                border-right: none;
+                border-bottom: 1px solid #ddd;
+            }
+            
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>REGARD CROISÉ</h1>
+        <p>Document de Travail Collaboratif - "Les conflits vus par les opprimés" - Juillet 2024</p>
+    </div>
+
+    <div class="container">
+        <!-- Slide 1: Dashboard et Statistiques -->
+        <div class="slide">
+            <div class="slide-header">📊 Dashboard du Projet</div>
+            <div class="slide-content">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="total-tasks">0</div>
+                        <div class="stat-label">Tâches Totales</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="completed-tasks">0</div>
+                        <div class="stat-label">Tâches Terminées</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="total-contacts">0</div>
+                        <div class="stat-label">Contacts Identifiés</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="contacted-people">0</div>
+                        <div class="stat-label">Personnes Contactées</div>
+                    </div>
+                </div>
+                
+                <h4>Progression Globale du Projet</h4>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="global-progress" style="width: 0%"></div>
+                </div>
+                <div style="text-align: center; margin-top: 5px; font-size: 14px; color: #7f8c8d;">
+                    <span id="progress-text">0% complété</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Répartition des Tâches -->
+        <div class="slide">
+            <div class="slide-header">👥 Répartition des Tâches et Suivi</div>
+            <div class="slide-content">
+                <button class="btn btn-success" onclick="addTask()">+ Ajouter une Tâche</button>
+                <button class="btn" onclick="exportData()">📥 Exporter les Données</button>
+                
+                <div class="task-grid" id="task-grid">
+                    <div class="task-header">Tâche / Description</div>
+                    <div class="task-header">Responsable</div>
+                    <div class="task-header">Échéance</div>
+                    <div class="task-header">Statut</div>
+                    <div class="task-header">Notes / Commentaires</div>
+                    
+                    <!-- Tâches prédéfinies -->
+                    <div class="task-row">
+                        <div class="task-cell">
+                            <strong>Recherche personnalités Prix Nobel</strong><br>
+                            <small>Documenter Malala, Denis Mukwege, Nadia Murad</small>
+                        </div>
+                        <div class="task-cell">
+                            <select class="team-select" onchange="updateStats()">
+                                <option value="">Assigner à...</option>
+                                <option value="Sarah">Sarah</option>
+                                <option value="Ahmed">Ahmed</option>
+                                <option value="Marie">Marie</option>
+                                <option value="Karim">Karim</option>
+                                <option value="Autre">Autre...</option>
+                            </select>
+                        </div>
+                        <div class="task-cell">
+                            <input type="date" value="2024-08-05">
+                        </div>
+                        <div class="task-cell">
+                            <select class="status-select" onchange="updateTaskStatus(this)">
+                                <option value="todo" class="status-todo">À faire</option>
+                                <option value="progress" class="status-progress">En cours</option>
+                                <option value="done" class="status-done">Terminé</option>
+                                <option value="blocked" class="status-blocked">Bloqué</option>
+                            </select>
+                        </div>
+                        <div class="task-cell">
+                            <textarea placeholder="Ajouter des notes..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="task-row">
+                        <div class="task-cell">
+                            <strong>Contact avec MSF</strong><br>
+                            <small>Identifier le bon interlocuteur et préparer l'approche</small>
+                        </div>
+                        <div class="task-cell">
+                            <select class="team-select" onchange="updateStats()">
+                                <option value="">Assigner à...</option>
+                                <option value="Sarah">Sarah</option>
+                                <option value="Ahmed">Ahmed</option>
+                                <option value="Marie">Marie</option>
+                                <option value="Karim">Karim</option>
+                                <option value="Autre">Autre...</option>
+                            </select>
+                        </div>
+                        <div class="task-cell">
+                            <input type="date" value="2024-08-07">
+                        </div>
+                        <div class="task-cell">
+                            <select class="status-select" onchange="updateTaskStatus(this)">
+                                <option value="todo" class="status-todo">À faire</option>
+                                <option value="progress" class="status-progress">En cours</option>
+                                <option value="done" class="status-done">Terminé</option>
+                                <option value="blocked" class="status-blocked">Bloqué</option>
+                            </select>
+                        </div>
+                        <div class="task-cell">
+                            <textarea placeholder="Ajouter des notes..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="task-row">
+                        <div class="task-cell">
+                            <strong>Préparation pitch TikTok</strong><br>
+                            <small>Créer la présentation du projet pour les contacts</small>
+                        </div>
+                        <div class="task-cell">
+                            <select class="team-select" onchange="updateStats()">
+                                <option value="">Assigner à...</option>
+                                <option value="Sarah">Sarah</option>
+                                <option value="Ahmed">Ahmed</option>
+                                <option value="Marie">Marie</option>
+                                <option value="Karim">Karim</option>
+                                <option value="Autre">Autre...</option>
+                            </select>
+                        </div>
+                        <div class="task-cell">
+                            <input type="date" value="2024-08-03">
+                        </div>
+                        <div class="task-cell">
+                            <select class="status-select" onchange="updateTaskStatus(this)">
+                                <option value="todo" class="status-todo">À faire</option>
+                                <option value="progress" class="status-progress">En cours</option>
+                                <option value="done" class="status-done">Terminé</option>
+                                <option value="blocked" class="status-blocked">Bloqué</option>
+                            </select>
+                        </div>
+                        <div class="task-cell">
+                            <textarea placeholder="Ajouter des notes..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="task-row">
+                        <div class="task-cell">
+                            <strong>Recherche experts académiques</strong><br>
+                            <small>Identifier 5 experts en résolution de conflits</small>
+                        </div>
+                        <div class="task-cell">
+                            <select class="team-select" onchange="updateStats()">
+                                <option value="">Assigner à...</option>
+                                <option value="Sarah">Sarah</option>
+                                <option value="Ahmed">Ahmed</option>
+                                <option value="Marie">Marie</option>
+                                <option value="Karim">Karim</option>
+                                <option value="Autre">Autre...</option>
+                            </select>
+                        </div>
+                        <div class="task-cell">
+                            <input type="date" value="2024-08-10">
+                        </div>
+                        <div class="task-cell">
+                            <select class="status-select" onchange="updateTaskStatus(this)">
+                                <option value="todo" class="status-todo">À faire</option>
+                                <option value="progress" class="status-progress">En cours</option>
+                                <option value="done" class="status-done">Terminé</option>
+                                <option value="blocked" class="status-blocked">Bloqué</option>
+                            </select>
+                        </div>
+                        <div class="task-cell">
+                            <textarea placeholder="Ajouter des notes..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Base de Données Contacts -->
+        <div class="slide">
+            <div class="slide-header">📇 Base de Données Contacts</div>
+            <div class="slide-content">
+                <button class="btn btn-success" onclick="addContact()">+ Ajouter un Contact</button>
+                
+                <div id="contacts-container">
+                    <!-- Contact 1 -->
+                    <div class="contact-item priority-high">
+                        <div class="contact-name">Malala Yousafzai</div>
+                        <p><strong>Profil :</strong> Militante pakistanaise, Prix Nobel de la paix 2014, survivante d'un attentat taliban</p>
+                        <div class="contact-info">
+                            <div class="contact-field">
+                                <label>Email/Contact</label>
+                                <input type="text" placeholder="À rechercher...">
+                            </div>
+                            <div class="contact-field">
+                                <label>Statut Contact</label>
+                                <select>
+                                    <option value="not-contacted">Non contacté</option>
+                                    <option value="contacted">Contacté</option>
+                                    <option value="responded">A répondu</option>
+                                    <option value="confirmed">Confirmé</option>
+                                    <option value="declined">Refusé</option>
+                                </select>
+                            </div>
+                            <div class="contact-field">
+                                <label>Priorité</label>
+                                <select>
+                                    <option value="high">Haute</option>
+                                    <option value="medium">Moyenne</option>
+                                    <option value="low">Basse</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="contact-field" style="margin-top: 15px;">
+                            <label>Notes et Approche</label>
+                            <textarea placeholder="Stratégie d'approche, angles d'interview, notes importantes..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Contact 2 -->
+                    <div class="contact-item priority-high">
+                        <div class="contact-name">Denis Mukwege</div>
+                        <p><strong>Profil :</strong> Gynécologue congolais, Prix Nobel de la paix 2018, défenseur des femmes victimes de violences</p>
+                        <div class="contact-info">
+                            <div class="contact-field">
+                                <label>Email/Contact</label>
+                                <input type="text" placeholder="À rechercher...">
+                            </div>
+                            <div class="contact-field">
+                                <label>Statut Contact</label>
+                                <select>
+                                    <option value="not-contacted">Non contacté</option>
+                                    <option value="contacted">Contacté</option>
+                                    <option value="responded">A répondu</option>
+                                    <option value="confirmed">Confirmé</option>
+                                    <option value="declined">Refusé</option>
+                                </select>
+                            </div>
+                            <div class="contact-field">
+                                <label>Priorité</label>
+                                <select>
+                                    <option value="high">Haute</option>
+                                    <option value="medium">Moyenne</option>
+                                    <option value="low">Basse</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="contact-field" style="margin-top: 15px;">
+                            <label>Notes et Approche</label>
+                            <textarea placeholder="Stratégie d'approche, angles d'interview, notes importantes..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Contact 3 -->
+                    <div class="contact-item priority-medium">
+                        <div class="contact-name">Médecins Sans Frontières (MSF)</div>
+                        <p><strong>Profil :</strong> Organisation médicale humanitaire, témoin direct des souffrances en zones de conflit</p>
+                        <div class="contact-info">
+                            <div class="contact-field">
+                                <label>Email/Contact</label>
+                                <input type="text" placeholder="Service communication/presse">
+                            </div>
+                            <div class="contact-field">
+                                <label>Statut Contact</label>
+                                <select>
+                                    <option value="not-contacted">Non contacté</option>
+                                    <option value="contacted">Contacté</option>
+                                    <option value="responded">A répondu</option>
+                                    <option value="confirmed">Confirmé</option>
+                                    <option value="declined">Refusé</option>
+                                </select>
+                            </div>
+                            <div class="contact-field">
+                                <label>Priorité</label>
+                                <select>
+                                    <option value="high">Haute</option>
+                                    <option value="medium" selected>Moyenne</option>
+                                    <option value="low">Basse</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="contact-field" style="margin-top: 15px;">
+                            <label>Notes et Approche</label>
+                            <textarea placeholder="Contacter le service presse, proposer interview avec médecin ayant travaillé en zone de conflit..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Planning et Échéances -->
+        <div class="slide">
+            <div class="slide-header">📅 Planning et Échéances</div>
+            <div class="slide-content">
+                <div class="stats-grid">
+                    <div class="stat-card" style="border-top-color: #e74c3c;">
+                        <div class="stat-number">Semaine 1</div>
+                        <div class="stat-label">Recherche & Documentation</div>
+                        <div style="margin-top: 10px; font-size: 12px; color: #7f8c8d;">29 Juil - 4 Août</div>
+                    </div>
+                    <div class="stat-card" style="border-top-color: #f39c12;">
+                        <div class="stat-number">Semaine 2</div>
+                        <div class="stat-label">Prise de Contact</div>
+                        <div style="margin-top: 10px; font-size: 12px; color: #7f8c8d;">5 - 11 Août</div>
+                    </div>
+                    <div class="stat-card" style="border-top-color: #27ae60;">
+                        <div class="stat-number">Semaine 3</div>
+                        <div class="stat-label">Suivi & Planification</div>
+                        <div style="margin-top: 10px; font-size: 12px; color: #7f8c8d;">12 - 18 Août</div>
+                    </div>
+                    <div class="stat-card" style="border-top-color: #9b59b6;">
+                        <div class="stat-number">Semaine 4</div>
+                        <div class="stat-label">Interviews & Production</div>
+                        <div style="margin-top: 10px; font-size: 12px; color: #7f8c8d;">19 - 25 Août</div>
+                    </div>
+                </div>
+
+                <div class="notes-section">
+                    <h4>📝 Notes de Réunion et Décisions</h4>
+                    <div class="editable" contenteditable="true" placeholder="Cliquez ici pour ajouter des notes de réunion, décisions importantes, changements de stratégie...">
+                        <p><strong>[Date] :</strong> Cliquez ici pour ajouter vos notes...</p>
+                    </div>
+                </div>
+
+                <div class="notes-section" style="background: #d4edda; border-color: #c3e6cb;">
+                    <h4 style="color: #155724;">✅ Réussites et Bonnes Nouvelles</h4>
+                    <div class="editable" contenteditable="true" placeholder="Partagez les bonnes nouvelles et les succès de l'équipe...">
+                        <p>Partagez ici les réussites, confirmations d'interviews, retours positifs...</p>
+                    </div>
+                </div>
+
+                <div class="notes-section" style="background: #f8d7da; border-color: #f5c6cb;">
+                    <h4 style="color: #721c24;">⚠️ Défis et Points d'Attention</h4>
+                    <div class="editable" contenteditable="true" placeholder="Notez les difficultés rencontrées et les solutions proposées...">
+                        <p>Documentez ici les obstacles, refus, difficultés de contact et solutions envisagées...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', function() {
+            updateStats();
+            loadSavedData();
+        });
+
+        // Mise à jour des statistiques
+        function updateStats() {
+            const tasks = document.querySelectorAll('.task-row');
+            const totalTasks = tasks.length;
+            const completedTasks = document.querySelectorAll('.status-select option[value="done"]:checked').length;
+            const contacts = document.querySelectorAll('.contact-item').length;
+            const contactedPeople = document.querySelectorAll('select option[value="contacted"]:checked, select option[value="responded"]:checked, select option[value="confirmed"]:checked').length;
+
+            document.getElementById('total-tasks').textContent = totalTasks;
+            document.getElementById('completed-tasks').textContent = completedTasks;
+            document.getElementById('total-contacts').textContent = contacts;
+            document.getElementById('contacted-people').textContent = contactedPeople;
+
+            // Mise à jour de la barre de progression
+            const progress = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+            document.getElementById('global-progress').style.width = progress + '%';
+            document.getElementById('progress-text').textContent = progress + '% complété';
+
+            saveData();
+        }
+
+        // Mise à jour du statut des tâches
+        function updateTaskStatus(select) {
+            const row = select.closest('.task-row');
+            const cells = row.querySelectorAll('.task-cell');
+            
+            // Appliquer la couleur selon le statut
+            cells.forEach(cell => {
+                cell.classList.remove('status-todo', 'status-progress', 'status-done', 'status-blocked');
+                cell.classList.add('status-' + select.value);
+            });
+            
+            updateStats();
+        }
+
+        // Ajouter une nouvelle tâche
+        function addTask() {
+            const taskGrid = document.getElementById('task-grid');
+            const newRow = document.createElement('div');
+            newRow.className = 'task-row';
+            newRow.innerHTML = `
+                <div class="task-cell">
+                    <input type="text" placeholder="Nom de la tâche" style="font-weight: bold; margin-bottom: 5px;">
+                    <br>
+                    <input type="text" placeholder="Description détaillée" style="font-size: 12px;">
+                </div>
+                <div class="task-cell">
+                    <select class="team-select" onchange="updateStats()">
+                        <option value="">Assigner à...</option>
+                        <option value="Sarah">Sarah</option>
+                        <option value="Ahmed">Ahmed</option>
+                        <option value="Marie">Marie</option>
+                        <option value="Karim">Karim</option>
+                        <option value="Autre">Autre...</option>
+                    </select>
+                </div>
+                <div class="task-cell">
+                    <input type="date">
+                </div>
+                <div class="task-cell">
+                    <select class="status-select" onchange="updateTaskStatus(this)">
+                        <option value="todo" class="status-todo">À faire</option>
+                        <option value="progress" class="status-progress">En cours</option>
+                        <option value="done" class="status-done">Terminé</option>
+                        <option value="blocked" class="status-blocked">Bloqué</option>
+                    </select>
+                </div>
+                <div class="task-cell">
+                    <textarea placeholder="Ajouter des notes..."></textarea>
+                    <button class="btn btn-danger" style="margin-top: 10px; font-size: 12px;" onclick="removeTask(this)">Supprimer</button>
+                </div>
+            `;
+            taskGrid.appendChild(newRow);
+            updateStats();
+        }
+
+        // Supprimer une tâche
+        function removeTask(button) {
+            if (confirm('Êtes-vous sûr de vouloir supprimer cette tâche ?')) {
+                button.closest('.task-row').remove();
+                updateStats();
+            }
+        }
+
+        // Ajouter un nouveau contact
+        function addContact() {
+            const container = document.getElementById('contacts-container');
+            const newContact = document.createElement('div');
+            newContact.className = 'contact-item priority-medium';
+            newContact.innerHTML = `
+                <div class="contact-name">
+                    <input type="text" placeholder="Nom du contact/organisation" style="font-weight: bold; font-size: 1.1em; border: none; width: 100%; background: transparent;">
+                </div>
+                <p><strong>Profil :</strong> 
+                    <input type="text" placeholder="Description du profil, expertise, rôle..." style="border: none; width: 70%; background: transparent;">
+                </p>
+                <div class="contact-info">
+                    <div class="contact-field">
+                        <label>Email/Contact</label>
+                        <input type="text" placeholder="Coordonnées de contact">
+                    </div>
+                    <div class="contact-field">
+                        <label>Statut Contact</label>
+                        <select onchange="updateStats()">
+                            <option value="not-contacted">Non contacté</option>
+                            <option value="contacted">Contacté</option>
+                            <option value="responded">A répondu</option>
+                            <option value="confirmed">Confirmé</option>
+                            <option value="declined">Refusé</option>
+                        </select>
+                    </div>
+                    <div class="contact-field">
+                        <label>Priorité</label>
+                        <select onchange="updateContactPriority(this)">
+                            <option value="high">Haute</option>
+                            <option value="medium" selected>Moyenne</option>
+                            <option value="low">Basse</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="contact-field" style="margin-top: 15px;">
+                    <label>Notes et Approche</label>
+                    <textarea placeholder="Stratégie d'approche, angles d'interview, notes importantes..."></textarea>
+                </div>
+                <button class="btn btn-danger" style="margin-top: 10px; font-size: 12px;" onclick="removeContact(this)">Supprimer ce contact</button>
+            `;
+            container.appendChild(newContact);
+            updateStats();
+        }
+
+        // Supprimer un contact
+        function removeContact(button) {
+            if (confirm('Êtes-vous sûr de vouloir supprimer ce contact ?')) {
+                button.closest('.contact-item').remove();
+                updateStats();
+            }
+        }
+
+        // Mettre à jour la priorité d'un contact
+        function updateContactPriority(select) {
+            const contactItem = select.closest('.contact-item');
+            contactItem.classList.remove('priority-high', 'priority-medium', 'priority-low');
+            contactItem.classList.add('priority-' + select.value);
+            saveData();
+        }
+
+        // Exporter les données
+        function exportData() {
+            const data = {
+                tasks: [],
+                contacts: [],
+                notes: document.querySelector('.notes-section .editable').innerHTML,
+                timestamp: new Date().toISOString()
+            };
+
+            // Exporter les tâches
+            document.querySelectorAll('.task-row').forEach(row => {
+                const cells = row.querySelectorAll('.task-cell');
+                if (cells.length >= 5) {
+                    data.tasks.push({
+                        task: cells[0].textContent || cells[0].querySelector('input')?.value || '',
+                        responsible: cells[1].querySelector('select')?.value || '',
+                        deadline: cells[2].querySelector('input')?.value || '',
+                        status: cells[3].querySelector('select')?.value || '',
+                        notes: cells[4].querySelector('textarea')?.value || ''
+                    });
+                }
+            });
+
+            // Exporter les contacts
+            document.querySelectorAll('.contact-item').forEach(item => {
+                const name = item.querySelector('.contact-name input')?.value || item.querySelector('.contact-name').textContent;
+                const fields = item.querySelectorAll('.contact-field input, .contact-field select, .contact-field textarea');
+                data.contacts.push({
+                    name: name,
+                    email: fields[0]?.value || '',
+                    status: fields[1]?.value || '',
+                    priority: fields[2]?.value || '',
+                    notes: fields[3]?.value || ''
+                });
+            });
+
+            // Créer et télécharger le fichier JSON
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `regard-croise-data-${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Sauvegarder les données localement
+        function saveData() {
+            const data = {
+                tasks: [],
+                contacts: [],
+                editableContent: {}
+            };
+
+            // Sauvegarder les tâches
+            document.querySelectorAll('.task-row').forEach((row, index) => {
+                const cells = row.querySelectorAll('.task-cell');
+                if (cells.length >= 5) {
+                    data.tasks.push({
+                        task: cells[0].querySelector('input')?.value || cells[0].textContent,
+                        responsible: cells[1].querySelector('select')?.value || '',
+                        deadline: cells[2].querySelector('input')?.value || '',
+                        status: cells[3].querySelector('select')?.value || 'todo',
+                        notes: cells[4].querySelector('textarea')?.value || ''
+                    });
+                }
+            });
+
+            // Sauvegarder les champs éditables
+            document.querySelectorAll('.editable').forEach((element, index) => {
+                data.editableContent[index] = element.innerHTML;
+            });
+
+            // Sauvegarder tous les champs de formulaire
+            document.querySelectorAll('input, select, textarea').forEach(field => {
+                if (field.id || field.name) {
+                    data[field.id || field.name] = field.value;
+                }
+            });
+
+            try {
+                // Note: localStorage n'est pas disponible dans cet environnement,
+                // mais dans un vrai contexte web, cette ligne fonctionnerait
+                // localStorage.setItem('regardCroiseData', JSON.stringify(data));
+            } catch (e) {
+                console.log('Sauvegarde en cours...');
+            }
+        }
+
+        // Charger les données sauvegardées
+        function loadSavedData() {
+            try {
+                // Note: cette fonction serait opérationnelle dans un vrai environnement web
+                // const savedData = localStorage.getItem('regardCroiseData');
+                // if (savedData) {
+                //     const data = JSON.parse(savedData);
+                //     // Restaurer les données...
+                // }
+            } catch (e) {
+                console.log('Chargement des données...');
+            }
+        }
+
+        // Sauvegarder automatiquement toutes les 30 secondes
+        setInterval(saveData, 30000);
+
+        // Sauvegarder avant de quitter la page
+        window.addEventListener('beforeunload', saveData);
+
+        // Gestionnaire pour les champs éditables
+        document.querySelectorAll('.editable').forEach(element => {
+            element.addEventListener('input', saveData);
+            element.addEventListener('blur', saveData);
+        });
+
+        // Gestionnaire pour tous les champs de formulaire
+        document.addEventListener('change', function(e) {
+            if (e.target.matches('input, select, textarea')) {
+                saveData();
+                if (e.target.matches('.status-select')) {
+                    updateTaskStatus(e.target);
+                }
+                if (e.target.matches('.team-select, select[onchange*="updateStats"]')) {
+                    updateStats();
+                }
+            }
+        });
+
+        // Fonction de recherche/filtre
+        function filterContent(searchTerm) {
+            const items = document.querySelectorAll('.contact-item, .task-row');
+            items.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(searchTerm.toLowerCase()) || searchTerm === '') {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Ajouter une barre de recherche dynamique
+        const searchBar = document.createElement('div');
+        searchBar.style.position = 'fixed';
+        searchBar.style.top = '20px';
+        searchBar.style.right = '20px';
+        searchBar.style.background = 'white';
+        searchBar.style.padding = '10px';
+        searchBar.style.borderRadius = '8px';
+        searchBar.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)';
+        searchBar.style.zIndex = '1000';
+        searchBar.innerHTML = `
+            <input type="text" placeholder="🔍 Rechercher..." style="border: 1px solid #ddd; padding: 8px; border-radius: 4px; width: 200px;" onkeyup="filterContent(this.value)">
+        `;
+        document.body.appendChild(searchBar);
+
+        // Notification de sauvegarde
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.position = 'fixed';
+            notification.style.bottom = '20px';
+            notification.style.right = '20px';
+            notification.style.background = '#27ae60';
+            notification.style.color = 'white';
+            notification.style.padding = '10px 20px';
+            notification.style.borderRadius = '6px';
+            notification.style.zIndex = '1001';
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Améliorer la fonction de sauvegarde avec notification
+        const originalSaveData = saveData;
+        saveData = function() {
+            originalSaveData();
+            // showNotification('✅ Données sauvegardées');
+        };
+    </script>
+</body>
+</html>
