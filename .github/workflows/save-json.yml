@@ -4,24 +4,37 @@ on:
   issues:
     types: [opened]
 
+permissions:
+  contents: write  # 🛡️ nécessaire pour push
+
 jobs:
   extract-and-save:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout le repo
+      - name: 🛎️ Cloner le dépôt
         uses: actions/checkout@v3
 
-      - name: Extraire les données JSON depuis l'issue
+      - name: 🧠 Extraire le JSON depuis l'issue
         id: extract
         run: |
+          echo "🔍 Extraction du JSON depuis l'issue #${{ github.event.issue.number }}"
           echo "${{ github.event.issue.body }}" > issue.txt
-          echo "EXTRACTING JSON..."
-          cat issue.txt | sed -n '/```json/,/```/p' | sed '/```/d' > data.json
 
-      - name: Commit le fichier data.json
+          # Extraction entre les balises ```json ... ```
+          sed -n '/```json/,/```/p' issue.txt | sed '/```/d' > data.json
+
+          echo "✅ JSON extrait :"
+          cat data.json
+
+      - name: ✅ Commit & Push si modifié
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data.json
-          git commit -m "Mise à jour automatique depuis issue #${{ github.event.issue.number }}"
-          git push
+
+          if [ -n "$(git status --porcelain)" ]; then
+            git add data.json
+            git commit -m "🔄 JSON auto-enregistré depuis l'issue #${{ github.event.issue.number }}"
+            git push
+          else
+            echo "⚠️ Aucun changement détecté, rien à push."
+          fi
