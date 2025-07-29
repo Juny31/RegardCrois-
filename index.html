@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +24,7 @@
             color: white;
             padding: 30px;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .header h1 {
@@ -45,7 +46,7 @@
         .slide {
             background: white;
             border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
             margin-bottom: 30px;
             overflow: hidden;
         }
@@ -101,7 +102,9 @@
             border-right: none;
         }
 
-        .task-cell input, .task-cell select, .task-cell textarea {
+        .task-cell input,
+        .task-cell select,
+        .task-cell textarea {
             width: 100%;
             border: 1px solid #ddd;
             padding: 8px;
@@ -118,10 +121,21 @@
             background-color: white;
         }
 
-        .status-todo { background-color: #fff3cd !important; }
-        .status-progress { background-color: #d4edda !important; }
-        .status-done { background-color: #d1ecf1 !important; }
-        .status-blocked { background-color: #f8d7da !important; }
+        .status-todo {
+            background-color: #fff3cd !important;
+        }
+
+        .status-progress {
+            background-color: #d4edda !important;
+        }
+
+        .status-done {
+            background-color: #d1ecf1 !important;
+        }
+
+        .status-blocked {
+            background-color: #f8d7da !important;
+        }
 
         .contact-section {
             background: #f8f9fa;
@@ -136,7 +150,7 @@
             margin: 15px 0;
             border-radius: 6px;
             border-left: 4px solid #3498db;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
 
         .contact-name {
@@ -165,16 +179,25 @@
             font-weight: 600;
         }
 
-        .contact-field input, .contact-field textarea {
+        .contact-field input,
+        .contact-field textarea {
             border: 1px solid #ddd;
             padding: 8px;
             border-radius: 4px;
             font-size: 14px;
         }
 
-        .priority-high { border-left-color: #e74c3c !important; }
-        .priority-medium { border-left-color: #f39c12 !important; }
-        .priority-low { border-left-color: #27ae60 !important; }
+        .priority-high {
+            border-left-color: #e74c3c !important;
+        }
+
+        .priority-medium {
+            border-left-color: #f39c12 !important;
+        }
+
+        .priority-low {
+            border-left-color: #27ae60 !important;
+        }
 
         .stats-grid {
             display: grid;
@@ -188,7 +211,7 @@
             padding: 25px;
             border-radius: 8px;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             border-top: 4px solid #3498db;
         }
 
@@ -221,11 +244,21 @@
             transform: translateY(-1px);
         }
 
-        .btn-success { background: #27ae60; }
-        .btn-success:hover { background: #219a52; }
+        .btn-success {
+            background: #27ae60;
+        }
 
-        .btn-danger { background: #e74c3c; }
-        .btn-danger:hover { background: #c0392b; }
+        .btn-success:hover {
+            background: #219a52;
+        }
+
+        .btn-danger {
+            background: #e74c3c;
+        }
+
+        .btn-danger:hover {
+            background: #c0392b;
+        }
 
         .progress-bar {
             width: 100%;
@@ -281,23 +314,25 @@
             .task-grid {
                 display: block;
             }
-            
-            .task-header, .task-cell {
+
+            .task-header,
+            .task-cell {
                 display: block;
                 border-right: none;
                 border-bottom: 1px solid #ddd;
             }
-            
+
             .contact-info {
                 grid-template-columns: 1fr;
             }
-            
+
             .stats-grid {
                 grid-template-columns: 1fr 1fr;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="header">
         <h1>REGARD CROISÉ</h1>
@@ -327,7 +362,7 @@
                         <div class="stat-label">Personnes Contactées</div>
                     </div>
                 </div>
-                
+
                 <h4>Progression Globale du Projet</h4>
                 <div class="progress-bar">
                     <div class="progress-fill" id="global-progress" style="width: 0%"></div>
@@ -344,14 +379,14 @@
             <div class="slide-content">
                 <button class="btn btn-success" onclick="addTask()">+ Ajouter une Tâche</button>
                 <button class="btn" onclick="exportData()">📥 Exporter les Données</button>
-                
+
                 <div class="task-grid" id="task-grid">
                     <div class="task-header">Tâche / Description</div>
                     <div class="task-header">Responsable</div>
                     <div class="task-header">Échéance</div>
                     <div class="task-header">Statut</div>
                     <div class="task-header">Notes / Commentaires</div>
-                    
+
                     <!-- Tâches prédéfinies -->
                     <div class="task-row">
                         <div class="task-cell">
@@ -361,10 +396,9 @@
                         <div class="task-cell">
                             <select class="team-select" onchange="updateStats()">
                                 <option value="">Assigner à...</option>
-                                <option value="Sarah">Sarah</option>
-                                <option value="Ahmed">Ahmed</option>
-                                <option value="Marie">Marie</option>
-                                <option value="Karim">Karim</option>
+                                <option value="Sarah">Dany Junior</option>
+                                <option value="Ahmed">Grace</option>
+                                <option value="Marie">Jude</option>
                                 <option value="Autre">Autre...</option>
                             </select>
                         </div>
@@ -392,10 +426,9 @@
                         <div class="task-cell">
                             <select class="team-select" onchange="updateStats()">
                                 <option value="">Assigner à...</option>
-                                <option value="Sarah">Sarah</option>
-                                <option value="Ahmed">Ahmed</option>
-                                <option value="Marie">Marie</option>
-                                <option value="Karim">Karim</option>
+                                <option value="Sarah">Dany Junior</option>
+                                <option value="Ahmed">Grace</option>
+                                <option value="Marie">Jude</option>
                                 <option value="Autre">Autre...</option>
                             </select>
                         </div>
@@ -423,10 +456,9 @@
                         <div class="task-cell">
                             <select class="team-select" onchange="updateStats()">
                                 <option value="">Assigner à...</option>
-                                <option value="Sarah">Sarah</option>
-                                <option value="Ahmed">Ahmed</option>
-                                <option value="Marie">Marie</option>
-                                <option value="Karim">Karim</option>
+                                <option value="Sarah">Dany Junior</option>
+                                <option value="Ahmed">Grace</option>
+                                <option value="Marie">Jude</option>
                                 <option value="Autre">Autre...</option>
                             </select>
                         </div>
@@ -454,10 +486,9 @@
                         <div class="task-cell">
                             <select class="team-select" onchange="updateStats()">
                                 <option value="">Assigner à...</option>
-                                <option value="Sarah">Sarah</option>
-                                <option value="Ahmed">Ahmed</option>
-                                <option value="Marie">Marie</option>
-                                <option value="Karim">Karim</option>
+                                <option value="Sarah">Dany Junior</option>
+                                <option value="Ahmed">Grace</option>
+                                <option value="Marie">Jude</option>
                                 <option value="Autre">Autre...</option>
                             </select>
                         </div>
@@ -485,12 +516,13 @@
             <div class="slide-header">📇 Base de Données Contacts</div>
             <div class="slide-content">
                 <button class="btn btn-success" onclick="addContact()">+ Ajouter un Contact</button>
-                
+
                 <div id="contacts-container">
                     <!-- Contact 1 -->
                     <div class="contact-item priority-high">
                         <div class="contact-name">Malala Yousafzai</div>
-                        <p><strong>Profil :</strong> Militante pakistanaise, Prix Nobel de la paix 2014, survivante d'un attentat taliban</p>
+                        <p><strong>Profil :</strong> Militante pakistanaise, Prix Nobel de la paix 2014, survivante d'un
+                            attentat taliban</p>
                         <div class="contact-info">
                             <div class="contact-field">
                                 <label>Email/Contact</label>
@@ -517,14 +549,16 @@
                         </div>
                         <div class="contact-field" style="margin-top: 15px;">
                             <label>Notes et Approche</label>
-                            <textarea placeholder="Stratégie d'approche, angles d'interview, notes importantes..."></textarea>
+                            <textarea
+                                placeholder="Stratégie d'approche, angles d'interview, notes importantes..."></textarea>
                         </div>
                     </div>
 
                     <!-- Contact 2 -->
                     <div class="contact-item priority-high">
                         <div class="contact-name">Denis Mukwege</div>
-                        <p><strong>Profil :</strong> Gynécologue congolais, Prix Nobel de la paix 2018, défenseur des femmes victimes de violences</p>
+                        <p><strong>Profil :</strong> Gynécologue congolais, Prix Nobel de la paix 2018, défenseur des
+                            femmes victimes de violences</p>
                         <div class="contact-info">
                             <div class="contact-field">
                                 <label>Email/Contact</label>
@@ -551,14 +585,16 @@
                         </div>
                         <div class="contact-field" style="margin-top: 15px;">
                             <label>Notes et Approche</label>
-                            <textarea placeholder="Stratégie d'approche, angles d'interview, notes importantes..."></textarea>
+                            <textarea
+                                placeholder="Stratégie d'approche, angles d'interview, notes importantes..."></textarea>
                         </div>
                     </div>
 
                     <!-- Contact 3 -->
                     <div class="contact-item priority-medium">
                         <div class="contact-name">Médecins Sans Frontières (MSF)</div>
-                        <p><strong>Profil :</strong> Organisation médicale humanitaire, témoin direct des souffrances en zones de conflit</p>
+                        <p><strong>Profil :</strong> Organisation médicale humanitaire, témoin direct des souffrances en
+                            zones de conflit</p>
                         <div class="contact-info">
                             <div class="contact-field">
                                 <label>Email/Contact</label>
@@ -585,7 +621,8 @@
                         </div>
                         <div class="contact-field" style="margin-top: 15px;">
                             <label>Notes et Approche</label>
-                            <textarea placeholder="Contacter le service presse, proposer interview avec médecin ayant travaillé en zone de conflit..."></textarea>
+                            <textarea
+                                placeholder="Contacter le service presse, proposer interview avec médecin ayant travaillé en zone de conflit..."></textarea>
                         </div>
                     </div>
                 </div>
@@ -621,21 +658,24 @@
 
                 <div class="notes-section">
                     <h4>📝 Notes de Réunion et Décisions</h4>
-                    <div class="editable" contenteditable="true" placeholder="Cliquez ici pour ajouter des notes de réunion, décisions importantes, changements de stratégie...">
+                    <div class="editable" contenteditable="true"
+                        placeholder="Cliquez ici pour ajouter des notes de réunion, décisions importantes, changements de stratégie...">
                         <p><strong>[Date] :</strong> Cliquez ici pour ajouter vos notes...</p>
                     </div>
                 </div>
 
                 <div class="notes-section" style="background: #d4edda; border-color: #c3e6cb;">
                     <h4 style="color: #155724;">✅ Réussites et Bonnes Nouvelles</h4>
-                    <div class="editable" contenteditable="true" placeholder="Partagez les bonnes nouvelles et les succès de l'équipe...">
+                    <div class="editable" contenteditable="true"
+                        placeholder="Partagez les bonnes nouvelles et les succès de l'équipe...">
                         <p>Partagez ici les réussites, confirmations d'interviews, retours positifs...</p>
                     </div>
                 </div>
 
                 <div class="notes-section" style="background: #f8d7da; border-color: #f5c6cb;">
                     <h4 style="color: #721c24;">⚠️ Défis et Points d'Attention</h4>
-                    <div class="editable" contenteditable="true" placeholder="Notez les difficultés rencontrées et les solutions proposées...">
+                    <div class="editable" contenteditable="true"
+                        placeholder="Notez les difficultés rencontrées et les solutions proposées...">
                         <p>Documentez ici les obstacles, refus, difficultés de contact et solutions envisagées...</p>
                     </div>
                 </div>
@@ -645,7 +685,7 @@
 
     <script>
         // Initialisation
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             updateStats();
             loadSavedData();
         });
@@ -675,13 +715,13 @@
         function updateTaskStatus(select) {
             const row = select.closest('.task-row');
             const cells = row.querySelectorAll('.task-cell');
-            
+
             // Appliquer la couleur selon le statut
             cells.forEach(cell => {
                 cell.classList.remove('status-todo', 'status-progress', 'status-done', 'status-blocked');
                 cell.classList.add('status-' + select.value);
             });
-            
+
             updateStats();
         }
 
@@ -699,10 +739,9 @@
                 <div class="task-cell">
                     <select class="team-select" onchange="updateStats()">
                         <option value="">Assigner à...</option>
-                        <option value="Sarah">Sarah</option>
-                        <option value="Ahmed">Ahmed</option>
-                        <option value="Marie">Marie</option>
-                        <option value="Karim">Karim</option>
+                                <option value="Sarah">Dany Junior</option>
+                                <option value="Ahmed">Grace</option>
+                                <option value="Marie">Jude</option>
                         <option value="Autre">Autre...</option>
                     </select>
                 </div>
@@ -914,7 +953,7 @@
         });
 
         // Gestionnaire pour tous les champs de formulaire
-        document.addEventListener('change', function(e) {
+        document.addEventListener('change', function (e) {
             if (e.target.matches('input, select, textarea')) {
                 saveData();
                 if (e.target.matches('.status-select')) {
@@ -967,7 +1006,7 @@
             notification.style.zIndex = '1001';
             notification.textContent = message;
             document.body.appendChild(notification);
-            
+
             setTimeout(() => {
                 notification.remove();
             }, 3000);
@@ -975,10 +1014,106 @@
 
         // Améliorer la fonction de sauvegarde avec notification
         const originalSaveData = saveData;
-        saveData = function() {
+        saveData = function () {
             originalSaveData();
             // showNotification('✅ Données sauvegardées');
         };
+
+        async function requestSaveViaIssue(data) {
+            const GITHUB_TOKEN = "ghp_ISSUE_ONLY_TOKEN"; // À créer plus bas, voir Étape 4
+            const REPO = "TON_UTILISATEUR/TON_DEPOT";
+
+            const issueTitle = "Mise à jour des données JSON";
+            const issueBody = `
+**[DONNEES A SAUVER]**
+\`\`\`json
+${JSON.stringify(data, null, 2)}
+\`\`\`
+`;
+
+            const res = await fetch(`https://api.github.com/repos/${REPO}/issues`, {
+                method: "POST",
+                headers: {
+                    "Authorization": `token ${GITHUB_TOKEN}`,
+                    "Accept": "application/vnd.github.v3+json"
+                },
+                body: JSON.stringify({
+                    title: issueTitle,
+                    body: issueBody
+                })
+            });
+
+            const json = await res.json();
+            if (res.ok) {
+                console.log("✅ Requête de sauvegarde envoyée :", json.html_url);
+                alert("Demande de sauvegarde envoyée. Elle sera traitée dans quelques secondes.");
+            } else {
+                console.error("Erreur :", json);
+                alert("Erreur lors de la création de la demande GitHub.");
+            }
+        }
+
+
+        async function saveDataToGitHub(data) {
+            const repo = "TON_UTILISATEUR_GITHUB/NOM_DU_DEPOT"; // ex: "juny31/regardcroise"
+            const filename = "data.json";
+            const branch = "main";
+            const token = "TON_TOKEN_PERSONNEL_ICI";
+
+            const apiUrl = `https://api.github.com/repos/${repo}/contents/${filename}`;
+
+            // Étape 1 : on récupère le SHA actuel du fichier
+            let sha = null;
+            try {
+                const res = await fetch(apiUrl, {
+                    headers: {
+                        "Authorization": `token ${token}`,
+                        "Accept": "application/vnd.github+json"
+                    }
+                });
+                if (res.ok) {
+                    const json = await res.json();
+                    sha = json.sha;
+                }
+            } catch (e) {
+                console.error("Erreur lors de la récupération du SHA :", e);
+            }
+
+            // Étape 2 : on encode les données en base64
+            const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
+
+            // Étape 3 : envoi à GitHub
+            const body = {
+                message: "Mise à jour auto depuis l’interface web",
+                content: content,
+                branch: branch,
+                ...(sha && { sha }) // SHA requis pour mise à jour
+            };
+
+            try {
+                const res = await fetch(apiUrl, {
+                    method: "PUT",
+                    headers: {
+                        "Authorization": `token ${token}`,
+                        "Accept": "application/vnd.github+json",
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(body)
+                });
+
+                const result = await res.json();
+                if (res.ok) {
+                    console.log("✅ Données sauvegardées sur GitHub !", result);
+                } else {
+                    console.error("❌ Erreur lors de l'envoi :", result);
+                }
+            } catch (e) {
+                console.error("Erreur fatale :", e);
+            }
+        }
+
+        saveDataToGitHub(data);
     </script>
 </body>
+
 </html>
