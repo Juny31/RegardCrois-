@@ -1,4 +1,887 @@
-<!DOCTYPE html>
+<input type="date" value="2024-08-05">
+                        </div>
+                        <div class="task-cell">
+                            <select class="status-select" onchange="updateTaskStatus(this)">
+                                <option value="todo" class="status-todo">À faire</option>
+                                <option value="progress" class="status-progress">En cours</option>
+                                <option value="done" class="status-done">Terminé</option>
+                                <option value="blocked" class="status-blocked">Bloqué</option>
+                            </select>
+                        </div>
+                        <div class="task-cell">
+                            <textarea placeholder="✍️ Ajouter des notes sur la progression..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Base de Données Contacts -->
+        <div class="slide">
+            <div class="slide-header">📇 Base de Données Contacts</div>
+            <div class="slide-content">
+                <button class="btn btn-success" onclick="addContact()">+ Ajouter un Contact</button>
+
+                <div id="contacts-container">
+                    <!-- Contact prédéfini -->
+                    <div class="contact-item priority-high peace-glow">
+                        <div class="contact-name">🏆 Denis Mukwege</div>
+                        <p><strong>Profil :</strong> 🩺 Gynécologue congolais, Prix Nobel de la paix 2018, défenseur des femmes victimes de violences sexuelles en RDC. Symbole de résistance pacifique contre l'oppression.</p>
+                        <div class="contact-info">
+                            <div class="contact-field">
+                                <label>Email/Contact</label>
+                                <input type="text" placeholder="À rechercher...">
+                            </div>
+                            <div class="contact-field">
+                                <label>Statut Contact</label>
+                                <select onchange="updateStats()">
+                                    <option value="not-contacted">Non contacté</option>
+                                    <option value="contacted">Contacté</option>
+                                    <option value="responded">A répondu</option>
+                                    <option value="confirmed">Confirmé</option>
+                                    <option value="declined">Refusé</option>
+                                </select>
+                            </div>
+                            <div class="contact-field">
+                                <label>Priorité</label>
+                                <select onchange="updateContactPriority(this)">
+                                    <option value="high">Haute</option>
+                                    <option value="medium">Moyenne</option>
+                                    <option value="low">Basse</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="contact-field" style="margin-top: 15px;">
+                            <label>🎯 Notes et Approche Stratégique</label>
+                            <textarea placeholder="💡 Stratégie d'approche, angles d'interview, messages de paix, notes importantes pour toucher les cœurs..."></textarea>
+                        </div>
+                        
+                        <!-- Boutons d'action pour chaque contact -->
+                        <div style="margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
+                            <button class="btn btn-success" style="font-size: 12px; padding: 8px 15px;">📞 Contacter</button>
+                            <button class="btn" style="font-size: 12px; padding: 8px 15px;">📄 Voir Profil</button>
+                            <button class="btn btn-danger" style="font-size: 12px; padding: 8px 15px;" onclick="removeContact(this)">🗑️ Supprimer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Planning et Échéances -->
+        <div class="slide">
+            <div class="slide-header">📅 Planning et Échéances</div>
+            <div class="slide-content">
+                <div class="stats-grid">
+                    <div class="stat-card peace-glow" style="border-top-color: var(--cyber-pink);">
+                        <div class="stat-number">🌅 Semaine 1</div>
+                        <div class="stat-label">Recherche & Documentation</div>
+                        <div style="margin-top: 10px; font-size: 12px; color: var(--deep-purple);">29 Juil - 4 Août</div>
+                    </div>
+                    <div class="stat-card" style="border-top-color: var(--peace-gold);">
+                        <div class="stat-number">🤝 Semaine 2</div>
+                        <div class="stat-label">Prise de Contact</div>
+                        <div style="margin-top: 10px; font-size: 12px; color: var(--deep-purple);">5 - 11 Août</div>
+                    </div>
+                    <div class="stat-card" style="border-top-color: var(--neon-green);">
+                        <div class="stat-number">📈 Semaine 3</div>
+                        <div class="stat-label">Suivi & Planification</div>
+                        <div style="margin-top: 10px; font-size: 12px; color: var(--deep-purple);">12 - 18 Août</div>
+                    </div>
+                    <div class="stat-card peace-glow" style="border-top-color: var(--electric-blue);">
+                        <div class="stat-number">🎬 Semaine 4</div>
+                        <div class="stat-label">Interviews & Production</div>
+                        <div style="margin-top: 10px; font-size: 12px; color: var(--deep-purple);">19 - 25 Août</div>
+                    </div>
+                </div>
+
+                <div class="notes-section">
+                    <h4>📝 Notes de Réunion et Décisions Importantes</h4>
+                    <div class="editable" contenteditable="true" placeholder="✍️ Cliquez ici pour ajouter des notes de réunion, décisions importantes, changements de stratégie pour la paix...">
+                        <p><strong>🗓️ [Date] :</strong> ✨ Cliquez ici pour ajouter vos notes inspirantes...</p>
+                    </div>
+                </div>
+
+                <div class="notes-section" style="background: linear-gradient(145deg, #d1fae5, #a7f3d0); border-color: var(--neon-green);">
+                    <h4 style="color: #065f46;">✅ Réussites et Bonnes Nouvelles de Paix 🕊️</h4>
+                    <div class="editable" contenteditable="true" placeholder="🌟 Partagez les bonnes nouvelles et les succès de l'équipe pour la paix...">
+                        <p>🎉 Partagez ici les réussites, confirmations d'interviews, retours positifs, moments de paix...</p>
+                    </div>
+                </div>
+
+                <div class="notes-section" style="background: linear-gradient(145deg, #fed7d7, #fbb6ce); border-color: var(--cyber-pink);">
+                    <h4 style="color: #991b1b;">⚠️ Défis et Points d'Attention 🛡️</h4>
+                    <div class="editable" contenteditable="true" placeholder="💪 Notez les difficultés rencontrées et les solutions pacifiques proposées...">
+                        <p>🔍 Documentez ici les obstacles, refus, difficultés de contact et solutions créatives envisagées...</p>
+                    </div>
+                </div>
+
+                <!-- Section motivation et inspiration -->
+                <div style="background: linear-gradient(135deg, var(--electric-blue), var(--deep-purple)); color: white; padding: 30px; border-radius: 15px; margin-top: 30px; text-align: center; box-shadow: 0 15px 40px rgba(0, 212, 255, 0.3);">
+                    <h3 style="font-family: 'Orbitron', monospace; margin-bottom: 15px;">🌍 Mission de Paix Mondiale</h3>
+                    <p style="font-size: 1.2em; font-style: italic; opacity: 0.9;">
+                        "La paix ne peut être maintenue par la force. Elle ne peut être obtenue que par la compréhension." 
+                        <br><strong>- Albert Einstein</strong>
+                    </p>
+                    <div style="margin-top: 20px;">
+                        <span style="font-size: 2em;">🕊️ ☮️ 🌟 ♥️ ✌️</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Save Status Notification -->
+    <div class="save-status" id="save-status"></div>
+
+    <script>
+        // Configuration GitHub corrigée
+        const GITHUB_CONFIG = {
+            repo: "Juny31/RegardCrois-",
+            branch: "main", 
+            filename: "data.json",
+            // ⚠️ IMPORTANT: Remplacez par votre token GitHub personnel
+            // Ce token d'exemple ne fonctionnera pas, vous devez créer le vôtre
+            token: "VOTRE_TOKEN_GITHUB_ICI" // Remplacez cette ligne !
+        };
+
+        // Variables globales
+        let githubConnected = false;
+        let saveInProgress = false;
+
+        // Initialisation améliorée
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('🚀 Initialisation de Regard Croisé...');
+            
+            // Vérifier la configuration GitHub
+            checkGitHubConfig();
+            
+            // Mettre à jour les statistiques
+            updateStats();
+            
+            // Charger les données sauvegardées
+            loadSavedData();
+            
+            // Test de connexion GitHub
+            testGitHubConnection();
+            
+            // Auto-save toutes les 5 minutes (plus long pour éviter les limites d'API)
+            setInterval(autoSaveToGitHub, 300000);
+            
+            console.log('✅ Application initialisée');
+        });
+
+        // Vérifier la configuration GitHub
+        function checkGitHubConfig() {
+            const status = document.getElementById('github-status');
+            
+            if (!GITHUB_CONFIG.token || GITHUB_CONFIG.token === "VOTRE_TOKEN_GITHUB_ICI") {
+                status.className = 'github-status disconnected';
+                status.textContent = '❌ Token GitHub manquant';
+                status.title = 'Veuillez configurer votre token GitHub dans le code';
+                githubConnected = false;
+                return false;
+            }
+            
+            if (!GITHUB_CONFIG.repo || !GITHUB_CONFIG.repo.includes('/')) {
+                status.className = 'github-status disconnected';
+                status.textContent = '❌ Repository mal configuré';
+                githubConnected = false;
+                return false;
+            }
+            
+            return true;
+        }
+
+        // Test de connexion GitHub
+        async function testGitHubConnection() {
+            const status = document.getElementById('github-status');
+            
+            if (!checkGitHubConfig()) {
+                return false;
+            }
+            
+            status.className = 'github-status testing';
+            status.textContent = '🔧 Test de connexion...';
+            
+            try {
+                // Test simple: récupérer les informations du repository
+                const response = await fetch(`https://api.github.com/repos/${GITHUB_CONFIG.repo}`, {
+                    headers: {
+                        "Authorization": `token ${GITHUB_CONFIG.token}`,
+                        "Accept": "application/vnd.github+json",
+                        "User-Agent": "RegardCroise-App/1.0"
+                    }
+                });
+
+                if (response.ok) {
+                    const repoData = await response.json();
+                    status.className = 'github-status connected';
+                    status.textContent = `✅ GitHub connecté (${repoData.name})`;
+                    status.title = `Repository: ${repoData.full_name}\nDernière mise à jour: ${new Date(repoData.updated_at).toLocaleString('fr-FR')}`;
+                    githubConnected = true;
+                    
+                    showSaveStatus('✅ Connexion GitHub établie!');
+                    return true;
+                } else {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+            } catch (error) {
+                console.error('❌ Erreur de connexion GitHub:', error);
+                status.className = 'github-status disconnected';
+                status.textContent = '❌ Connexion échouée';
+                status.title = `Erreur: ${error.message}`;
+                githubConnected = false;
+                
+                showSaveStatus('❌ Impossible de se connecter à GitHub', true);
+                return false;
+            }
+        }
+
+        // Mise à jour des statistiques
+        function updateStats() {
+            const tasks = document.querySelectorAll('.task-row');
+            const totalTasks = tasks.length;
+            const completedTasks = document.querySelectorAll('.status-select option[value="done"]:checked').length;
+            const contacts = document.querySelectorAll('.contact-item').length;
+            const contactedPeople = document.querySelectorAll('select option[value="contacted"]:checked, select option[value="responded"]:checked, select option[value="confirmed"]:checked').length;
+
+            document.getElementById('total-tasks').textContent = totalTasks;
+            document.getElementById('completed-tasks').textContent = completedTasks;
+            document.getElementById('total-contacts').textContent = contacts;
+            document.getElementById('contacted-people').textContent = contactedPeople;
+
+            // Mise à jour de la barre de progression
+            const progress = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
+            document.getElementById('global-progress').style.width = progress + '%';
+            document.getElementById('progress-text').textContent = progress + '% complété';
+
+            saveDataLocally();
+        }
+
+        // Mise à jour du statut des tâches
+        function updateTaskStatus(select) {
+            const row = select.closest('.task-row');
+            const cells = row.querySelectorAll('.task-cell');
+
+            // Appliquer la couleur selon le statut
+            cells.forEach(cell => {
+                cell.classList.remove('status-todo', 'status-progress', 'status-done', 'status-blocked');
+                cell.classList.add('status-' + select.value);
+            });
+
+            updateStats();
+        }
+
+        // Ajouter une nouvelle tâche
+        function addTask() {
+            const taskGrid = document.getElementById('task-grid');
+            const newRow = document.createElement('div');
+            newRow.className = 'task-row';
+            newRow.innerHTML = `
+                <div class="task-cell">
+                    <input type="text" placeholder="🎯 Nom de la tâche" style="font-weight: bold; margin-bottom: 5px;">
+                    <br>
+                    <input type="text" placeholder="📝 Description détaillée de la mission de paix" style="font-size: 12px;">
+                </div>
+                <div class="task-cell">
+                    <select class="team-select" onchange="updateStats()">
+                        <option value="">Assigner à...</option>
+                        <option value="Dany Junior">Dany Junior</option>
+                        <option value="Grace">Grace</option>
+                        <option value="Jude">Jude</option>
+                        <option value="Karim">Karim</option>
+                        <option value="Autre">Autre...</option>
+                    </select>
+                </div>
+                <div class="task-cell">
+                    <input type="date">
+                </div>
+                <div class="task-cell">
+                    <select class="status-select" onchange="updateTaskStatus(this)">
+                        <option value="todo" class="status-todo">À faire</option>
+                        <option value="progress" class="status-progress">En cours</option>
+                        <option value="done" class="status-done">Terminé</option>
+                        <option value="blocked" class="status-blocked">Bloqué</option>
+                    </select>
+                </div>
+                <div class="task-cell">
+                    <textarea placeholder="✍️ Ajouter des notes sur la progression..."></textarea>
+                    <button class="btn btn-danger" style="margin-top: 10px; font-size: 12px;" onclick="removeTask(this)">🗑️ Supprimer</button>
+                </div>
+            `;
+            taskGrid.appendChild(newRow);
+            updateStats();
+        }
+
+        // Supprimer une tâche
+        function removeTask(button) {
+            if (confirm('🤔 Êtes-vous sûr de vouloir supprimer cette tâche ?')) {
+                button.closest('.task-row').remove();
+                updateStats();
+            }
+        }
+
+        // Ajouter un nouveau contact
+        function addContact() {
+            const container = document.getElementById('contacts-container');
+            const newContact = document.createElement('div');
+            newContact.className = 'contact-item priority-medium';
+            newContact.innerHTML = `
+                <div class="contact-name">
+                    <input type="text" placeholder="✨ Nom du contact/organisation" style="font-weight: bold; font-size: 1.1em; border: none; width: 100%; background: transparent; color: var(--dark-navy);">
+                </div>
+                <p><strong>Profil :</strong> 
+                    <input type="text" placeholder="🎯 Description du profil, expertise, mission de paix..." style="border: none; width: 70%; background: transparent; color: var(--dark-navy);">
+                </p>
+                <div class="contact-info">
+                    <div class="contact-field">
+                        <label>Email/Contact</label>
+                        <input type="text" placeholder="📧 Coordonnées de contact">
+                    </div>
+                    <div class="contact-field">
+                        <label>Statut Contact</label>
+                        <select onchange="updateStats()">
+                            <option value="not-contacted">Non contacté</option>
+                            <option value="contacted">Contacté</option>
+                            <option value="responded">A répondu</option>
+                            <option value="confirmed">Confirmé</option>
+                            <option value="declined">Refusé</option>
+                        </select>
+                    </div>
+                    <div class="contact-field">
+                        <label>Priorité</label>
+                        <select onchange="updateContactPriority(this)">
+                            <option value="high">Haute</option>
+                            <option value="medium" selected>Moyenne</option>
+                            <option value="low">Basse</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="contact-field" style="margin-top: 15px;">
+                    <label>🎯 Notes et Approche Stratégique</label>
+                    <textarea placeholder="💡 Stratégie d'approche, angles d'interview, messages de paix..."></textarea>
+                </div>
+                <div style="margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
+                    <button class="btn btn-success" style="font-size: 12px; padding: 8px 15px;">📞 Contacter</button>
+                    <button class="btn" style="font-size: 12px; padding: 8px 15px;">📄 Voir Profil</button>
+                    <button class="btn btn-danger" style="font-size: 12px; padding: 8px 15px;" onclick="removeContact(this)">🗑️ Supprimer</button>
+                </div>
+            `;
+            container.appendChild(newContact);
+            updateStats();
+        }
+
+        // Supprimer un contact
+        function removeContact(button) {
+            if (confirm('🤔 Êtes-vous sûr de vouloir supprimer ce contact ?')) {
+                button.closest('.contact-item').remove();
+                updateStats();
+            }
+        }
+
+        // Mettre à jour la priorité d'un contact
+        function updateContactPriority(select) {
+            const contactItem = select.closest('.contact-item');
+            contactItem.classList.remove('priority-high', 'priority-medium', 'priority-low');
+            contactItem.classList.add('priority-' + select.value);
+            saveDataLocally();
+        }
+
+        // Collecter toutes les données avec meilleure structure
+        function collectData() {
+            const data = {
+                version: "1.0.0",
+                timestamp: new Date().toISOString(),
+                project: "Regard Croisé",
+                theme: "Les conflits vus par les opprimés",
+                month: "Juillet 2024",
+                tasks: [],
+                contacts: [],
+                notes: {
+                    meeting: "",
+                    successes: "",
+                    challenges: ""
+                },
+                metadata: {
+                    totalElements: 0,
+                    lastModified: new Date().toISOString(),
+                    userAgent: navigator.userAgent
+                }
+            };
+
+            // Collecter les tâches
+            document.querySelectorAll('.task-row').forEach((row, index) => {
+                const cells = row.querySelectorAll('.task-cell');
+                if (cells.length >= 5) {
+                    const taskInputs = cells[0].querySelectorAll('input');
+                    const taskName = taskInputs[0]?.value || cells[0].querySelector('strong')?.textContent || '';
+                    const taskDesc = taskInputs[1]?.value || cells[0].querySelector('small')?.textContent || '';
+                    
+                    if (taskName.trim()) {
+                        data.tasks.push({
+                            id: `task-${index}`,
+                            name: taskName.trim(),
+                            description: taskDesc.trim(),
+                            responsible: cells[1].querySelector('select')?.value || '',
+                            deadline: cells[2].querySelector('input')?.value || '',
+                            status: cells[3].querySelector('select')?.value || 'todo',
+                            notes: cells[4].querySelector('textarea')?.value || '',
+                            created: new Date().toISOString()
+                        });
+                    }
+                }
+            });
+
+            // Collecter les contacts
+            document.querySelectorAll('.contact-item').forEach((item, index) => {
+                const nameElement = item.querySelector('.contact-name input') || item.querySelector('.contact-name');
+                const name = nameElement?.value || nameElement?.textContent || '';
+                const profileInput = item.querySelector('p input');
+                const profileDesc = profileInput?.value || '';
+                const fields = item.querySelectorAll('.contact-field input, .contact-field select, .contact-field textarea');
+                
+                if (name.trim()) {
+                    data.contacts.push({
+                        id: `contact-${index}`,
+                        name: name.replace(/🏆\s*/, '').trim(),
+                        profile: profileDesc.trim(),
+                        email: fields[0]?.value || '',
+                        status: fields[1]?.value || 'not-contacted',
+                        priority: fields[2]?.value || 'medium',
+                        notes: fields[3]?.value || '',
+                        created: new Date().toISOString()
+                    });
+                }
+            });
+
+            // Collecter les notes
+            const editables = document.querySelectorAll('.editable');
+            if (editables.length >= 3) {
+                data.notes = {
+                    meeting: editables[0]?.innerHTML || '',
+                    successes: editables[1]?.innerHTML || '',
+                    challenges: editables[2]?.innerHTML || '',
+                    lastUpdated: new Date().toISOString()
+                };
+            }
+
+            // Métadonnées
+            data.metadata.totalElements = data.tasks.length + data.contacts.length;
+            
+            return data;
+        }
+
+        // Sauvegarder localement avec gestion d'erreurs
+        function saveDataLocally() {
+            try {
+                const data = collectData();
+                
+                // Vérifier si localStorage est disponible
+                if (typeof Storage !== "undefined" && localStorage) {
+                    localStorage.setItem('regardCroiseData', JSON.stringify(data));
+                    console.log('💾 Données sauvegardées localement');
+                } else {
+                    console.warn('⚠️ localStorage non disponible');
+                }
+                
+                return data;
+            } catch (error) {
+                console.error('❌ Erreur sauvegarde locale:', error);
+                return null;
+            }
+        }
+
+        // Charger les données sauvegardées localement
+        function loadSavedData() {
+            try {
+                if (typeof Storage !== "undefined" && localStorage) {
+                    const savedData = localStorage.getItem('regardCroiseData');
+                    if (savedData) {
+                        const data = JSON.parse(savedData);
+                        console.log('📂 Données locales trouvées:', data);
+                        // Ici vous pourriez restaurer les données dans l'interface
+                        // restoreDataToUI(data);
+                        return data;
+                    }
+                }
+                console.log('📄 Aucune donnée locale trouvée');
+                return null;
+            } catch (error) {
+                console.error('❌ Erreur chargement local:', error);
+                return null;
+            }
+        }
+
+        // Afficher une notification améliorée
+        function showSaveStatus(message, isError = false, isWarning = false) {
+            const status = document.getElementById('save-status');
+            status.textContent = message;
+            
+            let className = 'save-status show';
+            if (isError) className += ' error';
+            else if (isWarning) className += ' warning';
+            
+            status.className = className;
+            
+            setTimeout(() => {
+                status.className = 'save-status';
+            }, 4000);
+        }
+
+        // Sauvegarder sur GitHub avec gestion d'erreurs améliorée
+        async function saveToGitHub() {
+            if (saveInProgress) {
+                showSaveStatus('⏳ Sauvegarde déjà en cours...', false, true);
+                return;
+            }
+
+            if (!githubConnected) {
+                showSaveStatus('❌ GitHub non connecté. Testez la connexion d\'abord.', true);
+                return;
+            }
+
+            saveInProgress = true;
+            const data = collectData();
+            
+            showSaveStatus('💾 Sauvegarde en cours sur GitHub...');
+
+            try {
+                const apiUrl = `https://api.github.com/repos/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.filename}`;
+
+                // Étape 1: Récupérer le SHA actuel du fichier
+                let sha = null;
+                try {
+                    const getResponse = await fetch(apiUrl, {
+                        headers: {
+                            "Authorization": `token ${GITHUB_CONFIG.token}`,
+                            "Accept": "application/vnd.github+json",
+                            "User-Agent": "RegardCroise-App/1.0"
+                        }
+                    });
+                    
+                    if (getResponse.ok) {
+                        const fileData = await getResponse.json();
+                        sha = fileData.sha;
+                        console.log('📁 Fichier existant trouvé, SHA:', sha.substring(0, 7));
+                    } else if (getResponse.status === 404) {
+                        console.log('📄 Nouveau fichier à créer');
+                    } else {
+                        throw new Error(`Erreur récupération fichier: ${getResponse.status}`);
+                    }
+                } catch (getError) {
+                    console.warn('⚠️ Erreur récupération SHA:', getError.message);
+                }
+
+                // Étape 2: Encoder les données en base64
+                const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
+
+                // Étape 3: Créer/Mettre à jour le fichier
+                const updateBody = {
+                    message: `🔄 Mise à jour Regard Croisé - ${new Date().toLocaleString('fr-FR')}
+
+📊 Statistiques:
+- Tâches: ${data.tasks.length}
+- Contacts: ${data.contacts.length}
+- Éléments total: ${data.metadata.totalElements}
+
+🤖 Sauvegarde automatique`,
+                    content: content,
+                    branch: GITHUB_CONFIG.branch,
+                    ...(sha && { sha })
+                };
+
+                const updateResponse = await fetch(apiUrl, {
+                    method: "PUT",
+                    headers: {
+                        "Authorization": `token ${GITHUB_CONFIG.token}`,
+                        "Accept": "application/vnd.github+json",
+                        "Content-Type": "application/json",
+                        "User-Agent": "RegardCroise-App/1.0"
+                    },
+                    body: JSON.stringify(updateBody)
+                });
+
+                const result = await updateResponse.json();
+                
+                if (updateResponse.ok) {
+                    showSaveStatus('✅ Sauvegarde GitHub réussie!');
+                    console.log('✅ Fichier sauvegardé:', result.content.html_url);
+                } else {
+                    throw new Error(result.message || `Erreur HTTP ${updateResponse.status}`);
+                }
+
+            } catch (error) {
+                console.error('❌ Erreur sauvegarde GitHub:', error);
+                
+                // Messages d'erreur spécifiques
+                let errorMessage = '❌ Erreur sauvegarde GitHub';
+                if (error.message.includes('401')) {
+                    errorMessage = '❌ Token GitHub invalide ou expiré';
+                } else if (error.message.includes('403')) {
+                    errorMessage = '❌ Permissions insuffisantes';
+                } else if (error.message.includes('404')) {
+                    errorMessage = '❌ Repository non trouvé';
+                } else if (error.message.includes('network')) {
+                    errorMessage = '❌ Problème de connexion réseau';
+                }
+                
+                showSaveStatus(errorMessage, true);
+                
+                // Fallback: créer une issue GitHub avec les données
+                try {
+                    await createGitHubIssue(data);
+                    showSaveStatus('📝 Demande de sauvegarde créée via GitHub Issue');
+                } catch (issueError) {
+                    console.error('❌ Erreur création issue:', issueError);
+                    showSaveStatus('❌ Sauvegarde impossible. Données sauvées localement.', true);
+                }
+            } finally {
+                saveInProgress = false;
+            }
+        }
+
+        // Créer une issue GitHub comme fallback amélioré
+        async function createGitHubIssue(data) {
+            const stats = data.metadata || {};
+            const issueTitle = `🔄 Sauvegarde automatique Regard Croisé - ${new Date().toLocaleString('fr-FR')}`;
+            const issueBody = `## 📊 Sauvegarde automatique des données
+
+### 📈 Statistiques du projet:
+- **Tâches**: ${data.tasks.length}
+- **Contacts**: ${data.contacts.length}
+- **Dernière modification**: ${data.timestamp}
+- **Version**: ${data.version}
+
+### 💾 Données complètes à sauvegarder:
+
+**[DONNEES A SAUVER]**
+\`\`\`json
+${JSON.stringify(data, null, 2)}
+\`\`\`
+
+---
+*Issue créée automatiquement par le système de sauvegarde Regard Croisé*  
+*Pour traitement par GitHub Actions*`;
+
+            const response = await fetch(`https://api.github.com/repos/${GITHUB_CONFIG.repo}/issues`, {
+                method: "POST",
+                headers: {
+                    "Authorization": `token ${GITHUB_CONFIG.token}`,
+                    "Accept": "application/vnd.github+json",
+                    "Content-Type": "application/json",
+                    "User-Agent": "RegardCroise-App/1.0"
+                },
+                body: JSON.stringify({
+                    title: issueTitle,
+                    body: issueBody,
+                    labels: ["auto-save", "data", "regard-croise"]
+                })
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Impossible de créer l\'issue GitHub');
+            }
+
+            const issueData = await response.json();
+            console.log('📝 Issue créée:', issueData.html_url);
+            return issueData;
+        }
+
+        // Auto-sauvegarde intelligente
+        async function autoSaveToGitHub() {
+            if (!githubConnected || saveInProgress) {
+                console.log('⏸️ Auto-save ignoré (pas de connexion ou sauvegarde en cours)');
+                return;
+            }
+
+            console.log('🔄 Auto-sauvegarde programmée...');
+            
+            // Sauvegarder localement d'abord
+            const localData = saveDataLocally();
+            if (!localData) {
+                console.warn('⚠️ Auto-save annulé (pas de données)');
+                return;
+            }
+
+            // Sauvegarder sur GitHub seulement s'il y a des changements significatifs
+            if (localData.metadata.totalElements > 0) {
+                await saveToGitHub();
+            } else {
+                console.log('📄 Auto-save ignoré (pas de contenu significatif)');
+            }
+        }
+
+        // Exporter les données (téléchargement local) amélioré
+        function exportData() {
+            const data = collectData();
+            
+            // Ajouter des métadonnées d'export
+            data.export = {
+                exportedAt: new Date().toISOString(),
+                exportedBy: "Regard Croisé System",
+                format: "JSON",
+                version: "1.0.0"
+            };
+
+            const blob = new Blob([JSON.stringify(data, null, 2)], { 
+                type: 'application/json;charset=utf-8' 
+            });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            
+            a.href = url;
+            a.download = `regard-croise-${data.theme.toLowerCase().replace(/\s+/g, '-')}-${new Date().toISOString().split('T')[0]}.json`;
+            a.style.display = 'none';
+            
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showSaveStatus('📥 Données exportées avec succès!');
+            console.log('📥 Export terminé:', a.download);
+        }
+
+        // Fonction de recherche/filtre améliorée
+        function filterContent(searchTerm) {
+            const items = document.querySelectorAll('.contact-item, .task-row');
+            const term = searchTerm.toLowerCase().trim();
+            let visibleCount = 0;
+
+            items.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                const shouldShow = !term || text.includes(term);
+                
+                if (shouldShow) {
+                    item.style.display = '';
+                    item.style.opacity = '1';
+                    item.style.filter = 'none';
+                    visibleCount++;
+                } else {
+                    item.style.opacity = '0.3';
+                    item.style.filter = 'blur(1px)';
+                }
+            });
+
+            // Afficher le nombre de résultats
+            if (term && visibleCount === 0) {
+                showSaveStatus(`🔍 Aucun résultat pour "${searchTerm}"`, false, true);
+            } else if (term) {
+                showSaveStatus(`🔍 ${visibleCount} résultat(s) trouvé(s)`);
+            }
+        }
+
+        // Gestionnaires d'événements améliorés
+        document.addEventListener('change', function (e) {
+            if (e.target.matches('input, select, textarea')) {
+                saveDataLocally();
+                
+                if (e.target.matches('.status-select')) {
+                    updateTaskStatus(e.target);
+                }
+                if (e.target.matches('.team-select, select[onchange*="updateStats"]')) {
+                    updateStats();
+                }
+            }
+        });
+
+        // Gestionnaire pour les champs éditables
+        document.querySelectorAll('.editable').forEach(element => {
+            element.addEventListener('input', saveDataLocally);
+            element.addEventListener('blur', saveDataLocally);
+        });
+
+        // Sauvegarder avant de quitter la page
+        window.addEventListener('beforeunload', function(event) {
+            saveDataLocally();
+            
+            // Avertir si des modifications importantes ne sont pas sauvegardées sur GitHub
+            const data = collectData();
+            if (data.metadata.totalElements > 0 && !githubConnected) {
+                event.preventDefault();
+                event.returnValue = 'Des données importantes ne sont sauvegardées que localement. Voulez-vous vraiment quitter ?';
+            }
+        });
+
+        // Raccourcis clavier améliorés
+        document.addEventListener('keydown', function(e) {
+            // Ctrl+S pour sauvegarder
+            if (e.ctrlKey && e.key === 's') {
+                e.preventDefault();
+                saveToGitHub();
+            }
+            // Ctrl+E pour exporter
+            if (e.ctrlKey && e.key === 'e') {
+                e.preventDefault();
+                exportData();
+            }
+            // Ctrl+T pour tester GitHub
+            if (e.ctrlKey && e.key === 't') {
+                e.preventDefault();
+                testGitHubConnection();
+            }
+            // Escape pour effacer la recherche
+            if (e.key === 'Escape') {
+                const searchInput = document.querySelector('.search-input');
+                if (searchInput && searchInput.value) {
+                    searchInput.value = '';
+                    filterContent('');
+                }
+            }
+        });
+
+        // Gestion des erreurs globales
+        window.addEventListener('error', function(event) {
+            console.error('❌ Erreur JavaScript:', event.error);
+            showSaveStatus('❌ Une erreur est survenue', true);
+        });
+
+        window.addEventListener('unhandledrejection', function(event) {
+            console.error('❌ Promise rejetée:', event.reason);
+            showSaveStatus('❌ Erreur de traitement asynchrone', true);
+        });
+
+        // Console de débogage pour les développeurs
+        window.regardCroise = {
+            version: "1.0.0",
+            config: GITHUB_CONFIG,
+            data: collectData,
+            save: saveToGitHub,
+            export: exportData,
+            test: testGitHubConnection,
+            stats: updateStats,
+            debug: function() {
+                return {
+                    githubConnected,
+                    saveInProgress,
+                    config: GITHUB_CONFIG,
+                    data: collectData(),
+                    localStorage: !!localStorage.getItem('regardCroiseData')
+                };
+            }
+        };
+
+        // Messages de démarrage
+        console.log('🌍 Regard Croisé - Système de collaboration pour la paix initialisé!');
+        console.log('💡 Raccourcis clavier:');
+        console.log('   Ctrl+S: Sauvegarder sur GitHub');
+        console.log('   Ctrl+E: Exporter en JSON');
+        console.log('   Ctrl+T: Tester connexion GitHub');
+        console.log('   Escape: Effacer la recherche');
+        console.log('🔧 Console de débogage: regardCroise.debug()');
+        
+        // Instructions de configuration
+        if (!checkGitHubConfig()) {
+            console.warn('⚠️ CONFIGURATION REQUISE:');
+            console.warn('1. Créez un token GitHub personnel sur https://github.com/settings/tokens');
+            console.warn('2. Remplacez "VOTRE_TOKEN_GITHUB_ICI" dans le code par votre token');
+            console.warn('3. Vérifiez que le repository "Juny31/RegardCrois-" existe et est accessible');
+            console.warn('4. Testez la connexion avec le bouton "🔧 Tester GitHub"');
+        }
+    </script>
+</body>
+</html><!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -116,6 +999,35 @@
             margin: 0 auto;
             padding: 40px 20px;
             position: relative;
+        }
+
+        /* GitHub Status Indicator */
+        .github-status {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 8px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+
+        .github-status.connected {
+            background: linear-gradient(135deg, var(--neon-green), #22c55e);
+            box-shadow: 0 4px 15px rgba(57, 255, 20, 0.3);
+        }
+
+        .github-status.disconnected {
+            background: linear-gradient(135deg, var(--cyber-pink), #ef4444);
+            box-shadow: 0 4px 15px rgba(255, 0, 128, 0.3);
+        }
+
+        .github-status.testing {
+            background: linear-gradient(135deg, var(--peace-gold), #f59e0b);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
         }
 
         /* Floating search bar */
@@ -618,6 +1530,14 @@
             .search-input {
                 width: 100%;
             }
+
+            .github-status {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin-bottom: 10px;
+                display: inline-block;
+            }
         }
 
         /* GitHub Save Status */
@@ -647,10 +1567,20 @@
             background: linear-gradient(135deg, var(--cyber-pink), #ef4444);
             box-shadow: 0 6px 20px rgba(255, 0, 128, 0.3);
         }
+
+        .save-status.warning {
+            background: linear-gradient(135deg, var(--peace-gold), #f59e0b);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+        }
     </style>
 </head>
 
 <body>
+    <!-- GitHub Status Indicator -->
+    <div id="github-status" class="github-status testing">
+        🔧 Configuration GitHub en cours...
+    </div>
+
     <div class="header">
         <h1>REGARD CROISÉ</h1>
         <p>Document de Travail Collaboratif - "Les conflits vus par les opprimés" - Juillet 2024</p>
@@ -702,6 +1632,7 @@
                 <button class="btn btn-success" onclick="addTask()">+ Ajouter une Tâche</button>
                 <button class="btn" onclick="exportData()">📥 Exporter les Données</button>
                 <button class="btn" onclick="saveToGitHub()">☁️ Sauvegarder</button>
+                <button class="btn" onclick="testGitHubConnection()" style="background: linear-gradient(135deg, var(--peace-gold), #f59e0b);">🔧 Tester GitHub</button>
 
                 <div class="task-grid" id="task-grid">
                     <!-- Tâches prédéfinies -->
@@ -721,587 +1652,3 @@
                             </select>
                         </div>
                         <div class="task-cell">
-                            <input type="date" value="2024-08-05">
-                        </div>
-                        <div class="task-cell">
-                            <select class="status-select" onchange="updateTaskStatus(this)">
-                                <option value="todo" class="status-todo">À faire</option>
-                                <option value="progress" class="status-progress">En cours</option>
-                                <option value="done" class="status-done">Terminé</option>
-                                <option value="blocked" class="status-blocked">Bloqué</option>
-                            </select>
-                        </div>
-                        <div class="task-cell">
-                            <textarea placeholder="✍️ Ajouter des notes sur la progression..."></textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 3: Base de Données Contacts -->
-        <div class="slide">
-            <div class="slide-header">📇 Base de Données Contacts</div>
-            <div class="slide-content">
-                <button class="btn btn-success" onclick="addContact()">+ Ajouter un Contact</button>
-
-                <div id="contacts-container">
-                    <!-- Contact prédéfini -->
-                    <div class="contact-item priority-high peace-glow">
-                        <div class="contact-name">🏆 Denis Mukwege</div>
-                        <p><strong>Profil :</strong> 🩺 Gynécologue congolais, Prix Nobel de la paix 2018, défenseur des femmes victimes de violences sexuelles en RDC. Symbole de résistance pacifique contre l'oppression.</p>
-                        <div class="contact-info">
-                            <div class="contact-field">
-                                <label>Email/Contact</label>
-                                <input type="text" placeholder="À rechercher...">
-                            </div>
-                            <div class="contact-field">
-                                <label>Statut Contact</label>
-                                <select onchange="updateStats()">
-                                    <option value="not-contacted">Non contacté</option>
-                                    <option value="contacted">Contacté</option>
-                                    <option value="responded">A répondu</option>
-                                    <option value="confirmed">Confirmé</option>
-                                    <option value="declined">Refusé</option>
-                                </select>
-                            </div>
-                            <div class="contact-field">
-                                <label>Priorité</label>
-                                <select onchange="updateContactPriority(this)">
-                                    <option value="high">Haute</option>
-                                    <option value="medium">Moyenne</option>
-                                    <option value="low">Basse</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="contact-field" style="margin-top: 15px;">
-                            <label>🎯 Notes et Approche Stratégique</label>
-                            <textarea placeholder="💡 Stratégie d'approche, angles d'interview, messages de paix, notes importantes pour toucher les cœurs..."></textarea>
-                        </div>
-                        
-                        <!-- Boutons d'action pour chaque contact -->
-                        <div style="margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
-                            <button class="btn btn-success" style="font-size: 12px; padding: 8px 15px;">📞 Contacter</button>
-                            <button class="btn" style="font-size: 12px; padding: 8px 15px;">📄 Voir Profil</button>
-                            <button class="btn btn-danger" style="font-size: 12px; padding: 8px 15px;" onclick="removeContact(this)">🗑️ Supprimer</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 4: Planning et Échéances -->
-        <div class="slide">
-            <div class="slide-header">📅 Planning et Échéances</div>
-            <div class="slide-content">
-                <div class="stats-grid">
-                    <div class="stat-card peace-glow" style="border-top-color: var(--cyber-pink);">
-                        <div class="stat-number">🌅 Semaine 1</div>
-                        <div class="stat-label">Recherche & Documentation</div>
-                        <div style="margin-top: 10px; font-size: 12px; color: var(--deep-purple);">29 Juil - 4 Août</div>
-                    </div>
-                    <div class="stat-card" style="border-top-color: var(--peace-gold);">
-                        <div class="stat-number">🤝 Semaine 2</div>
-                        <div class="stat-label">Prise de Contact</div>
-                        <div style="margin-top: 10px; font-size: 12px; color: var(--deep-purple);">5 - 11 Août</div>
-                    </div>
-                    <div class="stat-card" style="border-top-color: var(--neon-green);">
-                        <div class="stat-number">📈 Semaine 3</div>
-                        <div class="stat-label">Suivi & Planification</div>
-                        <div style="margin-top: 10px; font-size: 12px; color: var(--deep-purple);">12 - 18 Août</div>
-                    </div>
-                    <div class="stat-card peace-glow" style="border-top-color: var(--electric-blue);">
-                        <div class="stat-number">🎬 Semaine 4</div>
-                        <div class="stat-label">Interviews & Production</div>
-                        <div style="margin-top: 10px; font-size: 12px; color: var(--deep-purple);">19 - 25 Août</div>
-                    </div>
-                </div>
-
-                <div class="notes-section">
-                    <h4>📝 Notes de Réunion et Décisions Importantes</h4>
-                    <div class="editable" contenteditable="true" placeholder="✍️ Cliquez ici pour ajouter des notes de réunion, décisions importantes, changements de stratégie pour la paix...">
-                        <p><strong>🗓️ [Date] :</strong> ✨ Cliquez ici pour ajouter vos notes inspirantes...</p>
-                    </div>
-                </div>
-
-                <div class="notes-section" style="background: linear-gradient(145deg, #d1fae5, #a7f3d0); border-color: var(--neon-green);">
-                    <h4 style="color: #065f46;">✅ Réussites et Bonnes Nouvelles de Paix 🕊️</h4>
-                    <div class="editable" contenteditable="true" placeholder="🌟 Partagez les bonnes nouvelles et les succès de l'équipe pour la paix...">
-                        <p>🎉 Partagez ici les réussites, confirmations d'interviews, retours positifs, moments de paix...</p>
-                    </div>
-                </div>
-
-                <div class="notes-section" style="background: linear-gradient(145deg, #fed7d7, #fbb6ce); border-color: var(--cyber-pink);">
-                    <h4 style="color: #991b1b;">⚠️ Défis et Points d'Attention 🛡️</h4>
-                    <div class="editable" contenteditable="true" placeholder="💪 Notez les difficultés rencontrées et les solutions pacifiques proposées...">
-                        <p>🔍 Documentez ici les obstacles, refus, difficultés de contact et solutions créatives envisagées...</p>
-                    </div>
-                </div>
-
-                <!-- Section motivation et inspiration -->
-                <div style="background: linear-gradient(135deg, var(--electric-blue), var(--deep-purple)); color: white; padding: 30px; border-radius: 15px; margin-top: 30px; text-align: center; box-shadow: 0 15px 40px rgba(0, 212, 255, 0.3);">
-                    <h3 style="font-family: 'Orbitron', monospace; margin-bottom: 15px;">🌍 Mission de Paix Mondiale</h3>
-                    <p style="font-size: 1.2em; font-style: italic; opacity: 0.9;">
-                        "La paix ne peut être maintenue par la force. Elle ne peut être obtenue que par la compréhension." 
-                        <br><strong>- Albert Einstein</strong>
-                    </p>
-                    <div style="margin-top: 20px;">
-                        <span style="font-size: 2em;">🕊️ ☮️ 🌟 ♥️ ✌️</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Save Status Notification -->
-    <div class="save-status" id="save-status"></div>
-
-    <script>
-        // Configuration GitHub
-        const GITHUB_CONFIG = {
-            repo: "Juny31/RegardCrois-",
-            branch: "main",
-            filename: "data.json",
-            // Remplacez par votre token GitHub personnel
-            token: "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"
-        };
-
-        // Initialisation
-        document.addEventListener('DOMContentLoaded', function () {
-            updateStats();
-            loadSavedData();
-            // Auto-save toutes les 2 minutes
-            setInterval(autoSaveToGitHub, 120000);
-        });
-
-        // Mise à jour des statistiques
-        function updateStats() {
-            const tasks = document.querySelectorAll('.task-row');
-            const totalTasks = tasks.length;
-            const completedTasks = document.querySelectorAll('.status-select option[value="done"]:checked').length;
-            const contacts = document.querySelectorAll('.contact-item').length;
-            const contactedPeople = document.querySelectorAll('select option[value="contacted"]:checked, select option[value="responded"]:checked, select option[value="confirmed"]:checked').length;
-
-            document.getElementById('total-tasks').textContent = totalTasks;
-            document.getElementById('completed-tasks').textContent = completedTasks;
-            document.getElementById('total-contacts').textContent = contacts;
-            document.getElementById('contacted-people').textContent = contactedPeople;
-
-            // Mise à jour de la barre de progression
-            const progress = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
-            document.getElementById('global-progress').style.width = progress + '%';
-            document.getElementById('progress-text').textContent = progress + '% complété';
-
-            saveDataLocally();
-        }
-
-        // Mise à jour du statut des tâches
-        function updateTaskStatus(select) {
-            const row = select.closest('.task-row');
-            const cells = row.querySelectorAll('.task-cell');
-
-            // Appliquer la couleur selon le statut
-            cells.forEach(cell => {
-                cell.classList.remove('status-todo', 'status-progress', 'status-done', 'status-blocked');
-                cell.classList.add('status-' + select.value);
-            });
-
-            updateStats();
-        }
-
-        // Ajouter une nouvelle tâche
-        function addTask() {
-            const taskGrid = document.getElementById('task-grid');
-            const newRow = document.createElement('div');
-            newRow.className = 'task-row';
-            newRow.innerHTML = `
-                <div class="task-cell">
-                    <input type="text" placeholder="🎯 Nom de la tâche" style="font-weight: bold; margin-bottom: 5px;">
-                    <br>
-                    <input type="text" placeholder="📝 Description détaillée de la mission de paix" style="font-size: 12px;">
-                </div>
-                <div class="task-cell">
-                    <select class="team-select" onchange="updateStats()">
-                        <option value="">Assigner à...</option>
-                        <option value="Dany Junior">Dany Junior</option>
-                        <option value="Grace">Grace</option>
-                        <option value="Jude">Jude</option>
-                        <option value="Karim">Karim</option>
-                        <option value="Autre">Autre...</option>
-                    </select>
-                </div>
-                <div class="task-cell">
-                    <input type="date">
-                </div>
-                <div class="task-cell">
-                    <select class="status-select" onchange="updateTaskStatus(this)">
-                        <option value="todo" class="status-todo">À faire</option>
-                        <option value="progress" class="status-progress">En cours</option>
-                        <option value="done" class="status-done">Terminé</option>
-                        <option value="blocked" class="status-blocked">Bloqué</option>
-                    </select>
-                </div>
-                <div class="task-cell">
-                    <textarea placeholder="✍️ Ajouter des notes sur la progression..."></textarea>
-                    <button class="btn btn-danger" style="margin-top: 10px; font-size: 12px;" onclick="removeTask(this)">🗑️ Supprimer</button>
-                </div>
-            `;
-            taskGrid.appendChild(newRow);
-            updateStats();
-        }
-
-        // Supprimer une tâche
-        function removeTask(button) {
-            if (confirm('🤔 Êtes-vous sûr de vouloir supprimer cette tâche ?')) {
-                button.closest('.task-row').remove();
-                updateStats();
-            }
-        }
-
-        // Ajouter un nouveau contact
-        function addContact() {
-            const container = document.getElementById('contacts-container');
-            const newContact = document.createElement('div');
-            newContact.className = 'contact-item priority-medium';
-            newContact.innerHTML = `
-                <div class="contact-name">
-                    <input type="text" placeholder="✨ Nom du contact/organisation" style="font-weight: bold; font-size: 1.1em; border: none; width: 100%; background: transparent; color: var(--dark-navy);">
-                </div>
-                <p><strong>Profil :</strong> 
-                    <input type="text" placeholder="🎯 Description du profil, expertise, mission de paix..." style="border: none; width: 70%; background: transparent; color: var(--dark-navy);">
-                </p>
-                <div class="contact-info">
-                    <div class="contact-field">
-                        <label>Email/Contact</label>
-                        <input type="text" placeholder="📧 Coordonnées de contact">
-                    </div>
-                    <div class="contact-field">
-                        <label>Statut Contact</label>
-                        <select onchange="updateStats()">
-                            <option value="not-contacted">Non contacté</option>
-                            <option value="contacted">Contacté</option>
-                            <option value="responded">A répondu</option>
-                            <option value="confirmed">Confirmé</option>
-                            <option value="declined">Refusé</option>
-                        </select>
-                    </div>
-                    <div class="contact-field">
-                        <label>Priorité</label>
-                        <select onchange="updateContactPriority(this)">
-                            <option value="high">Haute</option>
-                            <option value="medium" selected>Moyenne</option>
-                            <option value="low">Basse</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="contact-field" style="margin-top: 15px;">
-                    <label>🎯 Notes et Approche Stratégique</label>
-                    <textarea placeholder="💡 Stratégie d'approche, angles d'interview, messages de paix..."></textarea>
-                </div>
-                <div style="margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
-                    <button class="btn btn-success" style="font-size: 12px; padding: 8px 15px;">📞 Contacter</button>
-                    <button class="btn" style="font-size: 12px; padding: 8px 15px;">📄 Voir Profil</button>
-                    <button class="btn btn-danger" style="font-size: 12px; padding: 8px 15px;" onclick="removeContact(this)">🗑️ Supprimer</button>
-                </div>
-            `;
-            container.appendChild(newContact);
-            updateStats();
-        }
-
-        // Supprimer un contact
-        function removeContact(button) {
-            if (confirm('🤔 Êtes-vous sûr de vouloir supprimer ce contact ?')) {
-                button.closest('.contact-item').remove();
-                updateStats();
-            }
-        }
-
-        // Mettre à jour la priorité d'un contact
-        function updateContactPriority(select) {
-            const contactItem = select.closest('.contact-item');
-            contactItem.classList.remove('priority-high', 'priority-medium', 'priority-low');
-            contactItem.classList.add('priority-' + select.value);
-            saveDataLocally();
-        }
-
-        // Collecter toutes les données
-        function collectData() {
-            const data = {
-                timestamp: new Date().toISOString(),
-                project: "Regard Croisé - Les conflits vus par les opprimés",
-                tasks: [],
-                contacts: [],
-                notes: {
-                    meeting: "",
-                    successes: "",
-                    challenges: ""
-                }
-            };
-
-            // Collecter les tâches
-            document.querySelectorAll('.task-row').forEach(row => {
-                const cells = row.querySelectorAll('.task-cell');
-                if (cells.length >= 5) {
-                    const taskName = cells[0].querySelector('input')?.value || cells[0].querySelector('strong')?.textContent || '';
-                    const taskDesc = cells[0].querySelector('small')?.textContent || cells[0].querySelectorAll('input')[1]?.value || '';
-                    
-                    data.tasks.push({
-                        task: taskName,
-                        description: taskDesc,
-                        responsible: cells[1].querySelector('select')?.value || '',
-                        deadline: cells[2].querySelector('input')?.value || '',
-                        status: cells[3].querySelector('select')?.value || 'todo',
-                        notes: cells[4].querySelector('textarea')?.value || ''
-                    });
-                }
-            });
-
-            // Collecter les contacts
-            document.querySelectorAll('.contact-item').forEach(item => {
-                const nameElement = item.querySelector('.contact-name input') || item.querySelector('.contact-name');
-                const name = nameElement?.value || nameElement?.textContent || '';
-                const profileDesc = item.querySelector('p input')?.value || '';
-                const fields = item.querySelectorAll('.contact-field input, .contact-field select, .contact-field textarea');
-                
-                data.contacts.push({
-                    name: name.replace('🏆 ', '').trim(),
-                    profile: profileDesc,
-                    email: fields[0]?.value || '',
-                    status: fields[1]?.value || 'not-contacted',
-                    priority: fields[2]?.value || 'medium',
-                    notes: fields[3]?.value || ''
-                });
-            });
-
-            // Collecter les notes
-            const editables = document.querySelectorAll('.editable');
-            if (editables.length >= 3) {
-                data.notes.meeting = editables[0]?.innerHTML || '';
-                data.notes.successes = editables[1]?.innerHTML || '';
-                data.notes.challenges = editables[2]?.innerHTML || '';
-            }
-
-            return data;
-        }
-
-        // Sauvegarder localement (fallback)
-        function saveDataLocally() {
-            const data = collectData();
-            try {
-                // Note: localStorage n'est pas disponible dans cet environnement Claude
-                // Mais cette fonction fonctionnerait dans un vrai navigateur
-                // localStorage.setItem('regardCroiseData', JSON.stringify(data));
-                console.log('Données collectées:', data);
-            } catch (e) {
-                console.log('Sauvegarde locale en cours...');
-            }
-        }
-
-        // Charger les données sauvegardées
-        function loadSavedData() {
-            try {
-                // Note: cette fonction serait opérationnelle dans un vrai environnement web
-                // const savedData = localStorage.getItem('regardCroiseData');
-                // if (savedData) {
-                //     const data = JSON.parse(savedData);
-                //     // Restaurer les données...
-                // }
-                console.log('Chargement des données...');
-            } catch (e) {
-                console.log('Aucune donnée sauvegardée trouvée');
-            }
-        }
-
-        // Afficher une notification
-        function showSaveStatus(message, isError = false) {
-            const status = document.getElementById('save-status');
-            status.textContent = message;
-            status.className = 'save-status show' + (isError ? ' error' : '');
-            
-            setTimeout(() => {
-                status.className = 'save-status';
-            }, 3000);
-        }
-
-        // Sauvegarder sur GitHub
-        async function saveToGitHub() {
-            const data = collectData();
-            
-            showSaveStatus('💾 Sauvegarde en cours sur GitHub...');
-
-            try {
-                const apiUrl = `https://api.github.com/repos/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.filename}`;
-
-                // Étape 1: Récupérer le SHA actuel du fichier
-                let sha = null;
-                try {
-                    const getResponse = await fetch(apiUrl, {
-                        headers: {
-                            "Authorization": `token ${GITHUB_CONFIG.token}`,
-                            "Accept": "application/vnd.github+json"
-                        }
-                    });
-                    if (getResponse.ok) {
-                        const fileData = await getResponse.json();
-                        sha = fileData.sha;
-                    }
-                } catch (e) {
-                    console.log('Fichier n\'existe pas encore, création d\'un nouveau fichier');
-                }
-
-                // Étape 2: Encoder les données en base64
-                const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
-
-                // Étape 3: Créer/Mettre à jour le fichier
-                const updateBody = {
-                    message: `🔄 Mise à jour automatique des données - ${new Date().toLocaleString('fr-FR')}`,
-                    content: content,
-                    branch: GITHUB_CONFIG.branch,
-                    ...(sha && { sha })
-                };
-
-                const updateResponse = await fetch(apiUrl, {
-                    method: "PUT",
-                    headers: {
-                        "Authorization": `token ${GITHUB_CONFIG.token}`,
-                        "Accept": "application/vnd.github+json",
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(updateBody)
-                });
-
-                const result = await updateResponse.json();
-                
-                if (updateResponse.ok) {
-                    showSaveStatus('✅ Données sauvegardées avec succès sur GitHub!');
-                    console.log('✅ Sauvegarde GitHub réussie:', result);
-                } else {
-                    throw new Error(result.message || 'Erreur lors de la sauvegarde');
-                }
-
-            } catch (error) {
-                console.error('❌ Erreur lors de la sauvegarde GitHub:', error);
-                showSaveStatus('❌ Erreur lors de la sauvegarde GitHub', true);
-                
-                // Fallback: créer une issue GitHub avec les données
-                try {
-                    await createGitHubIssue(data);
-                    showSaveStatus('📝 Demande de sauvegarde créée via GitHub Issue');
-                } catch (issueError) {
-                    console.error('❌ Erreur lors de la création de l\'issue:', issueError);
-                    showSaveStatus('❌ Impossible de sauvegarder. Vérifiez votre connexion.', true);
-                }
-            }
-        }
-
-        // Créer une issue GitHub comme fallback
-        async function createGitHubIssue(data) {
-            const issueTitle = `🔄 Sauvegarde automatique - ${new Date().toLocaleString('fr-FR')}`;
-            const issueBody = `## Données à sauvegarder
-
-**[DONNEES A SAUVER]**
-\`\`\`json
-${JSON.stringify(data, null, 2)}
-\`\`\`
-
-*Issue créée automatiquement par le système de sauvegarde.*`;
-
-            const response = await fetch(`https://api.github.com/repos/${GITHUB_CONFIG.repo}/issues`, {
-                method: "POST",
-                headers: {
-                    "Authorization": `token ${GITHUB_CONFIG.token}`,
-                    "Accept": "application/vnd.github.v3+json",
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    title: issueTitle,
-                    body: issueBody,
-                    labels: ["auto-save", "data"]
-                })
-            });
-
-            if (!response.ok) {
-                throw new Error('Impossible de créer l\'issue GitHub');
-            }
-
-            return await response.json();
-        }
-
-        // Auto-sauvegarde
-        async function autoSaveToGitHub() {
-            console.log('🔄 Auto-sauvegarde en cours...');
-            await saveToGitHub();
-        }
-
-        // Exporter les données (téléchargement local)
-        function exportData() {
-            const data = collectData();
-            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `regard-croise-data-${new Date().toISOString().split('T')[0]}.json`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-            
-            showSaveStatus('📥 Données exportées avec succès!');
-        }
-
-        // Fonction de recherche/filtre
-        function filterContent(searchTerm) {
-            const items = document.querySelectorAll('.contact-item, .task-row');
-            items.forEach(item => {
-                const text = item.textContent.toLowerCase();
-                if (text.includes(searchTerm.toLowerCase()) || searchTerm === '') {
-                    item.style.display = '';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        }
-
-        // Gestionnaires d'événements
-        document.addEventListener('change', function (e) {
-            if (e.target.matches('input, select, textarea')) {
-                saveDataLocally();
-                if (e.target.matches('.status-select')) {
-                    updateTaskStatus(e.target);
-                }
-                if (e.target.matches('.team-select, select[onchange*="updateStats"]')) {
-                    updateStats();
-                }
-            }
-        });
-
-        // Gestionnaire pour les champs éditables
-        document.querySelectorAll('.editable').forEach(element => {
-            element.addEventListener('input', saveDataLocally);
-            element.addEventListener('blur', saveDataLocally);
-        });
-
-        // Sauvegarder avant de quitter la page
-        window.addEventListener('beforeunload', function() {
-            saveDataLocally();
-        });
-
-        // Raccourcis clavier
-        document.addEventListener('keydown', function(e) {
-            // Ctrl+S pour sauvegarder
-            if (e.ctrlKey && e.key === 's') {
-                e.preventDefault();
-                saveToGitHub();
-            }
-            // Ctrl+E pour exporter
-            if (e.ctrlKey && e.key === 'e') {
-                e.preventDefault();
-                exportData();
-            }
-        });
-
-        console.log('🌍 Regard Croisé - Système de collaboration pour la paix initialisé!');
-        console.log('💡 Raccourcis: Ctrl+S (sauvegarder), Ctrl+E (exporter)');
-    </script>
-</body>
-</html>
